@@ -1,0 +1,1806 @@
+<!DOCTYPE html>
+<!-- saved from url=(0126)https://dev.to/meganad60/react-routing-practical-steps-in-creating-navigation-bar-that-renders-dynamic-content-with-react-2jon -->
+<html lang="en" class="js-focus-visible" data-js-focus-visible=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>React Routing: Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community</title>
+      <meta name="last-updated" content="2024-07-08 15:49:52 UTC">
+      <meta name="user-signed-in" content="false">
+      <meta name="head-cached-at" content="1720453792">
+        <!-- Experimental web monetization payment pointer for micropayments -->
+        <!-- It lets readers make micropayments to websites they visit. -->
+        <!-- This is step 1: Get live in production to test for platform-wide payment pointer. -->
+        <!-- Step 2: Allow authors to set their payment pointer so they can directly monetize their content based on visitors. -->
+        <!-- Step 3: Enable further functionality based on what we learn from this experimentation and how the ecosystem evolves. -->
+        <meta name="monetization" content="$ilp.uphold.com/24HhrUGG7ekn">
+      <meta name="environment" content="production">
+      <link rel="stylesheet" href="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/minimal-d270c00ab12434e5c448c77553aef0aa52c66deb5277336d06615a9fa4c829b2.css" media="all" id="main-minimal-stylesheet">
+<link rel="stylesheet" href="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/views-64d5fff92cc913e57b90d60da8f10d00138c946bcd9212518cbdbd2fb73efe93.css" media="all" id="main-views-stylesheet">
+<link rel="stylesheet" href="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/crayons-c7c9b51d631bafd6e567aba1b6c187226289b036411a507a7341e4c9a6bd2588.css" media="all" id="main-crayons-stylesheet">
+
+      <script src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/base-50f903db06d50c91cbe65287db8ed07043334a67b0e3644a91cdd1dad87d2c14.js.download" defer="defer"></script>
+<script src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/application-eda38975dabb16a71c211df07f1fea434c4eeef1dacbd8e6c4bca3306f16e01a.js.download" defer="defer"></script>
+<script src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/baseInitializers-bc498cfd7bb7d2a2da59d68d0b2055cc2dd26fee3669ab88edbb396d37bc33.download" defer="defer"></script>
+<script src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/Search-90cc0b51e8501ba38ef49647f818dbce93695856e574dace0da765eda82529c5.js.download" defer="defer"></script>
+<script src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/baseTracking-b6bf73e5ee66633e151e7d5b7c6bbccedfa4c59e3615be97b98c4c0f543ddae7.j.download" defer="defer"></script>
+      
+    <link rel="canonical" href="https://nad.hashnode.dev/react-routing-practical-steps-in-creating-navigation-bar-that-renders-dynamic-content">
+    <meta name="description" content="A newbie in React will find it challenging in creating a navigation bar that renders different...">
+    <meta name="keywords" content="software, coding, development, engineering, inclusive, community">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://dev.to/meganad60/react-routing-practical-steps-in-creating-navigation-bar-that-renders-dynamic-content-with-react-2jon">
+    <meta property="og:title" content="React Routing: Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React.">
+    <meta property="og:description" content="A newbie in React will find it challenging in creating a navigation bar that renders different...">
+    <meta property="og:site_name" content="DEV Community">
+    <meta name="twitter:site" content="@thepracticaldev">
+    <meta name="twitter:creator" content="@">
+    <meta name="twitter:title" content="React Routing: Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React.">
+    <meta name="twitter:description" content="A newbie in React will find it challenging in creating a navigation bar that renders different...">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:widgets:new-embed-design" content="on">
+    <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+      <meta property="og:image" content="https://media.dev.to/cdn-cgi/image/width=1000,height=500,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fmops0mrts8ludbdn2hkl.jpg">
+      <meta name="twitter:image:src" content="https://media.dev.to/cdn-cgi/image/width=1000,height=500,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fmops0mrts8ludbdn2hkl.jpg">
+
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+      <link rel="icon" type="image/x-icon" href="https://res.cloudinary.com/practicaldev/image/fetch/s--E8ak4Hr1--/c_limit,f_auto,fl_progressive,q_auto,w_32/https://dev-to.s3.us-east-2.amazonaws.com/favicon.ico">
+      <link rel="apple-touch-icon" href="https://media.dev.to/cdn-cgi/image/width=180,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="152x152" href="https://media.dev.to/cdn-cgi/image/width=152,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="180x180" href="https://media.dev.to/cdn-cgi/image/width=180,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="167x167" href="https://media.dev.to/cdn-cgi/image/width=167,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <link href="https://media.dev.to/cdn-cgi/image/width=192,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" rel="icon" sizes="192x192">
+      <link href="https://media.dev.to/cdn-cgi/image/width=128,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png" rel="icon" sizes="128x128">
+      <meta name="apple-mobile-web-app-title" content="dev.to">
+      <meta name="application-name" content="dev.to">
+      <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+      <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+      <link rel="search" href="https://dev.to/open-search.xml" type="application/opensearchdescription+xml" title="DEV Community">
+
+      <meta property="forem:name" content="DEV Community">
+      <meta property="forem:logo" content="https://media.dev.to/cdn-cgi/image/width=512,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png">
+      <meta property="forem:domain" content="dev.to">
+    <style>
+  @keyframes barrelRoll {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .articletag-doabarrelroll {
+    background: #010100;
+    background: url(https://media.dev.to/cdn-cgi/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fj27fydricaw99jhkzwic.png) no-repeat center center fixed;
+    background-size: cover
+  }
+
+  .articletag-doabarrelroll .crayons-layout {
+    animation: barrelRoll 2s ease-in-out 1; /* Animation name, duration, timing function, iteration count */
+  }
+
+  .articletag-perfectlycromulent {
+    background: #f4f4f4;
+    background: url(https://media.dev.to/cdn-cgi/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Frzs6a59uuxjx328uu9p7.png) repeat;
+  }
+
+  @keyframes vibrate {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+.articletag-shakethingsup {
+  animation: vibrate 0.1s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .articletag-shakethingsup {
+    animation: none;
+  }
+  .articletag-doabarrelroll .crayons-layout {
+    animation: none;
+  }
+}
+</style>
+  <style id="ff-styles">
+  .ff-container{display:inline-block;position:relative}.ff-container .ff-image{z-index:0;vertical-align:top;opacity:0}.ff-container .ff-canvas{display:inline-block;position:absolute;top:0;left:0;pointer-events:none;z-index:1;vertical-align:top;opacity:0}.ff-container .ff-canvas.ff-canvas-ready{-webkit-transition:opacity 300ms;-o-transition:opacity 300ms;-moz-transition:opacity 300ms;transition:opacity 300ms;opacity:1}.ff-container.ff-active .ff-image{opacity:1}.ff-container.ff-active .ff-canvas.ff-canvas-ready{-webkit-transition:none;-o-transition:none;-moz-transition:none;transition:none;opacity:0}.ff-container.ff-active .ff-overlay{display:none}.ff-container.ff-inactive .ff-canvas.ff-canvas-ready{-webkit-transition:opacity 300ms;-o-transition:opacity 300ms;-moz-transition:opacity 300ms;transition:opacity 300ms;opacity:1}.ff-container.ff-inactive .ff-image{-webkit-transition:opacity 300ms;-o-transition:opacity 300ms;-moz-transition:opacity 300ms;transition:opacity 300ms;-webkit-transition-delay:170ms;-moz-transition-delay:170ms;-o-transition-delay:170ms;transition-delay:170ms;opacity:0}.ff-container.ff-responsive{width:100%}.ff-container.ff-responsive .ff-image,.ff-container.ff-responsive .ff-canvas{width:100%}.ff-container.ff-loading-icon:before{content:"";position:absolute;background-image:url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHdpZHRoPSc1MHB4JyBoZWlnaHQ9JzUwcHgnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIiBjbGFzcz0idWlsLXNwaW4iPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSJub25lIiBjbGFzcz0iYmsiPjwvcmVjdD48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1MCA1MCkiPjxnIHRyYW5zZm9ybT0icm90YXRlKDApIHRyYW5zbGF0ZSgzNCAwKSI+PGNpcmNsZSBjeD0iMCIgY3k9IjAiIHI9IjgiIGZpbGw9IiNmZmZmZmYiPjxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIGZyb209IjEiIHRvPSIwLjEiIGJlZ2luPSIwcyIgZHVyPSIxcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT48YW5pbWF0ZVRyYW5zZm9ybSBhdHRyaWJ1dGVOYW1lPSJ0cmFuc2Zvcm0iIHR5cGU9InNjYWxlIiBmcm9tPSIxLjUiIHRvPSIxIiBiZWdpbj0iMHMiIGR1cj0iMXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj48L2FuaW1hdGVUcmFuc2Zvcm0+PC9jaXJjbGU+PC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDQ1KSB0cmFuc2xhdGUoMzQgMCkiPjxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSI4IiBmaWxsPSIjZmZmZmZmIj48YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiBmcm9tPSIxIiB0bz0iMC4xIiBiZWdpbj0iMC4xMnMiIGR1cj0iMXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj48L2FuaW1hdGU+PGFuaW1hdGVUcmFuc2Zvcm0gYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiB0eXBlPSJzY2FsZSIgZnJvbT0iMS41IiB0bz0iMSIgYmVnaW49IjAuMTJzIiBkdXI9IjFzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+PC9hbmltYXRlVHJhbnNmb3JtPjwvY2lyY2xlPjwvZz48ZyB0cmFuc2Zvcm09InJvdGF0ZSg5MCkgdHJhbnNsYXRlKDM0IDApIj48Y2lyY2xlIGN4PSIwIiBjeT0iMCIgcj0iOCIgZmlsbD0iI2ZmZmZmZiI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgZnJvbT0iMSIgdG89IjAuMSIgYmVnaW49IjAuMjVzIiBkdXI9IjFzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+PC9hbmltYXRlPjxhbmltYXRlVHJhbnNmb3JtIGF0dHJpYnV0ZU5hbWU9InRyYW5zZm9ybSIgdHlwZT0ic2NhbGUiIGZyb209IjEuNSIgdG89IjEiIGJlZ2luPSIwLjI1cyIgZHVyPSIxcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZVRyYW5zZm9ybT48L2NpcmNsZT48L2c+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMTM1KSB0cmFuc2xhdGUoMzQgMCkiPjxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSI4IiBmaWxsPSIjZmZmZmZmIj48YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiBmcm9tPSIxIiB0bz0iMC4xIiBiZWdpbj0iMC4zN3MiIGR1cj0iMXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj48L2FuaW1hdGU+PGFuaW1hdGVUcmFuc2Zvcm0gYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiB0eXBlPSJzY2FsZSIgZnJvbT0iMS41IiB0bz0iMSIgYmVnaW49IjAuMzdzIiBkdXI9IjFzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+PC9hbmltYXRlVHJhbnNmb3JtPjwvY2lyY2xlPjwvZz48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxODApIHRyYW5zbGF0ZSgzNCAwKSI+PGNpcmNsZSBjeD0iMCIgY3k9IjAiIHI9IjgiIGZpbGw9IiNmZmZmZmYiPjxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIGZyb209IjEiIHRvPSIwLjEiIGJlZ2luPSIwLjVzIiBkdXI9IjFzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+PC9hbmltYXRlPjxhbmltYXRlVHJhbnNmb3JtIGF0dHJpYnV0ZU5hbWU9InRyYW5zZm9ybSIgdHlwZT0ic2NhbGUiIGZyb209IjEuNSIgdG89IjEiIGJlZ2luPSIwLjVzIiBkdXI9IjFzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+PC9hbmltYXRlVHJhbnNmb3JtPjwvY2lyY2xlPjwvZz48ZyB0cmFuc2Zvcm09InJvdGF0ZSgyMjUpIHRyYW5zbGF0ZSgzNCAwKSI+PGNpcmNsZSBjeD0iMCIgY3k9IjAiIHI9IjgiIGZpbGw9IiNmZmZmZmYiPjxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIGZyb209IjEiIHRvPSIwLjEiIGJlZ2luPSIwLjYycyIgZHVyPSIxcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT48YW5pbWF0ZVRyYW5zZm9ybSBhdHRyaWJ1dGVOYW1lPSJ0cmFuc2Zvcm0iIHR5cGU9InNjYWxlIiBmcm9tPSIxLjUiIHRvPSIxIiBiZWdpbj0iMC42MnMiIGR1cj0iMXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj48L2FuaW1hdGVUcmFuc2Zvcm0+PC9jaXJjbGU+PC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDI3MCkgdHJhbnNsYXRlKDM0IDApIj48Y2lyY2xlIGN4PSIwIiBjeT0iMCIgcj0iOCIgZmlsbD0iI2ZmZmZmZiI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgZnJvbT0iMSIgdG89IjAuMSIgYmVnaW49IjAuNzVzIiBkdXI9IjFzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+PC9hbmltYXRlPjxhbmltYXRlVHJhbnNmb3JtIGF0dHJpYnV0ZU5hbWU9InRyYW5zZm9ybSIgdHlwZT0ic2NhbGUiIGZyb209IjEuNSIgdG89IjEiIGJlZ2luPSIwLjc1cyIgZHVyPSIxcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZVRyYW5zZm9ybT48L2NpcmNsZT48L2c+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMzE1KSB0cmFuc2xhdGUoMzQgMCkiPjxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSI4IiBmaWxsPSIjZmZmZmZmIj48YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiBmcm9tPSIxIiB0bz0iMC4xIiBiZWdpbj0iMC44N3MiIGR1cj0iMXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj48L2FuaW1hdGU+PGFuaW1hdGVUcmFuc2Zvcm0gYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiB0eXBlPSJzY2FsZSIgZnJvbT0iMS41IiB0bz0iMSIgYmVnaW49IjAuODdzIiBkdXI9IjFzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+PC9hbmltYXRlVHJhbnNmb3JtPjwvY2lyY2xlPjwvZz48L2c+PC9zdmc+");background-position:center center;background-repeat:no-repeat;height:46px;width:46px;z-index:3;top:50%;left:50%;-webkit-transform:translate(-50%, -50%);-moz-transform:translate(-50%, -50%);-ms-transform:translate(-50%, -50%);-o-transform:translate(-50%, -50%);transform:translate(-50%, -50%)}.ff-container .ff-overlay{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF4AAABeCAQAAAAA22vlAAAGFklEQVR42t2ce0yVdRjHP9zlKnfQAwoqV80bImCR90tGhJmShVOxVFJBrdSWVmvmnJlSm2ZbWwunlc4ZOf5IV7NJ84KmFpmZioiKigoKyPWct72vJ4dj0Lm8t9Nz/jt/fd73/L6/5/v8fs9z4H8VTjjhjAuu5o8LLtJ3DoEuYnvghS89pY8PnrjjgrPeH0BEd8fbEHRpaVOZqVUQ2m/cLfomGX+8pAfQ8S8gonvglx/TeEToEKbW69vnD6Annrjp9QEevnU/Q0RDmdAp2m6ffSs0DD964KrHBeSEK96EnlgtdBGN5T9kEYQPHvp7AGc8CCCq7ozQTdzdv2U4AXjrTQEueBFGorFN6DaMzZWFU/t2UIAuwhVfIkkSLIiW6lOLfULx1Y8C3PAnmjTBwmg4UTyFQLzx0MMCcieQAaQLlofp1u73B+sjB7gTRCyjBavCWF+xPs2gvQJE+DjGCFZH8+WjuQRrqwB3gm2DF+P+4Z1jJQVotIDsghcEk7H6q4I4/M02TuUHsBNejPa6c2sTemlhImSAF6Pp/M/ZkgJUNREywYtRe3B7mroKkBFetNFXP5vTXz0bLSu8ZKNr/nhDLRstO7xko39Tx0YrAi/G7e+Vt9GKwYs2uqowK0pJE6EgvKSAG7/nK2ejFYaXbPSpkgxlFKACvKSAfR8Pk18BKsELgrGpcovchaRq8IJUSJ5eIqcCVIWXFHBy/1QC5VGA6vCii7i9d+NQOQpJLeBFBTy4vMl+BWgELyng2q95hNijAA3hJQWUPTpKcbV+AWkMLylgzwdDbFOA9vCiAhovb5zQx3oF6AJeUkDVyQXWHqXoBl5SwLF9k6w5TNQVvHSY+K3lh4l6gxcV0FCxIc1gSSGpQ3hJAZWl2QTghVt3+DqFF3+AMwUE4SXt/w4HL5hatoonoZ5db546hheEq3sQ1767Q8I33yKGYOndOx68IDCE3vg4JLypnWRE2+DqgPC3K0glGn+HhC8pIpUoh3zzd24aZpJEJL4OB3+vNnMlExlEON4OJViTUFqWsJwsUulHID1wdhj4C1XZn7KA6aSTQDg+XRsEncHX3lu323k5c3medAYiXlR7OIQ9aG3bfSjobRaQzWRSiMeAv2SL9W/MjpWnrOd1csggnSH049+rIb37+crq3M/JZw7TGEcScRgsu1XUHL6+cfN3riuYzwwmkkIifSw/iNIUvt1Y/EvkWhbxEs/wJE8QTZg1ByAawp/+a9xHLGY2mYxmGAPoZe31g0bw1TUFX5LPPGmVjyCOCFsufjSAf9C0vcTzTV5lJpNJJZG+hNh26awyvNF08PiA91jEyzzLUwyWtkR/W6/7VYX/81JmIUukVT6GYcTQ275GC9Xga2rX7GQZuUxnAsnEE2l/k5cq8M0tRQd7rmKBtMrTGEQUoXK0VigObxIOnxq8jjxeMSf+/oTL1dioMPzFqllbWcocshhDErGWJn7N4evurxftbS4vMpGRJNBH7lZGheDb2vYcChHtrZj4R0mrPEz+/g9F4MvOjtpgtrdPM5T+9FKmfVd2+Gs3874gn7mP7G3Eo/tuJ123rDQ2bdvvISb+GUyy1t5qCm80HTje710WMYuptthbDeHPVTxK/KPNiV+FMQ0Z4O/Urdn1WOKPIFidARk74Vtbd/0YsPqxxB+iXlexXfBHy0d82CnxezpAO+6V6nnbzYl/rPyJX0H4hsbC4g4VvwKJXyF4o7HkSF87Kn4N4csvTNncqeL30m7swuKBl5q7q3ZQwDxeYLztFb/c8LGM/q/xuuaWogO+K3nNXPEPtL3ilxdeGvK6fr479NLTUi0kVvwPD0HDba/45QzzeN2ObV2BV1zL2dahForRYkvsKsyDjZ7TrvzdGfxe/aa9zuKWqFgtZF+YR0oZH7/w4oWO4O3txaWGd1iobC1kX5iHeUkmwy33k68vXWlvF4S6+p/Kxm0gjxyeU7YWsi/MY9TEkUYGOeSxjBXks4jZZHU6BNXZGLt5gJ1exJLMeDKZwUymk8E4RipfC8mB74EfoUSRyHBSSGUkQ4nX4yrv6u17E0AYEUQRTV8MhDjCnzbgaH+X8Q8RGKy7dFBuqQAAAABJRU5ErkJggg==");background-repeat:no-repeat;max-width:94px;max-height:94px;position:absolute;left:0%;right:0%;top:0%;bottom:0%;margin:auto;-webkit-background-size:contain;-moz-background-size:contain;background-size:contain;background-position:center;pointer-events:none;z-index:100}
+</style><script src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/js" async=""></script><meta name="csrf-param" content="authenticity_token"><meta name="csrf-token" content="axcgOyqog-lgfHW9LNdfDtG6ocNuztiidxZb1q_fD_wbMhULSRyW86dYSpImmiICEj1yofhFP1Z6VNATW1RysA"></head>
+      <body class="sans-serif-article-body default-header" data-user-status="logged-out" data-community-name="DEV Community" data-locale="en" data-honeybadger-key="hbp_nqu4Y66HuEKlD6YRGssZuRQnPOjDm50J8Zkr" data-deployed-at="2024-07-05T17:27:42Z" data-latest-commit-id="731259edf8cab67c5ff02c1a2c947ba135db8445" data-ga-tracking="UA-71991109-1" data-cookie-banner-user-context="logged_out_only" data-cookie-banner-platform-context="off" data-algolia-id="PRSOBFP46H" data-algolia-search-key="9aa7d31610cba78851c9b1f63776a9dd" data-algolia-display="true" data-ga4-tracking-id="G-TYEM8Y3JN3" data-runtime="Browser-Windows" data-loaded="true">
+        <link rel="stylesheet" href="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/minimal-d270c00ab12434e5c448c77553aef0aa52c66deb5277336d06615a9fa4c829b2.css" media="all" id="secondary-minimal-stylesheet">
+<link rel="stylesheet" href="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/views-64d5fff92cc913e57b90d60da8f10d00138c946bcd9212518cbdbd2fb73efe93.css" media="all" id="secondary-views-stylesheet">
+<link rel="stylesheet" href="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/crayons-c7c9b51d631bafd6e567aba1b6c187226289b036411a507a7341e4c9a6bd2588.css" media="all" id="secondary-crayons-stylesheet">
+
+        <div id="body-styles">
+          <style>
+            :root {
+              --accent-brand-lighter-rgb: 80, 99, 301;
+              --accent-brand-rgb: 59, 73, 223;
+              --accent-brand-darker-rgb: 47, 58, 178;
+            }
+          </style>
+        </div>
+        <div id="audiocontent" data-podcast="">
+          
+        </div>
+        <div class="navigation-progress" id="navigation-progress"></div>
+<header id="topbar" class="crayons-header topbar print-hidden">
+  <span id="route-change-target" tabindex="-1"></span>
+  <a href="https://dev.to/meganad60/react-routing-practical-steps-in-creating-navigation-bar-that-renders-dynamic-content-with-react-2jon#main-content" class="skip-content-link">Skip to content</a>
+  <div class="crayons-header__container">
+    <span class="inline-block m:hidden ">
+      <button class="c-btn c-btn--icon-alone js-hamburger-trigger mx-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="a1pvxv9847em8om8b1qiq7xityk52auf" class="crayons-icon"><title id="a1pvxv9847em8om8b1qiq7xityk52auf">Navigation menu</title>
+    <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"></path>
+</svg>
+
+      </button>
+    </span>
+    <a href="https://dev.to/" class="site-logo" aria-label="DEV Community Home">
+    <img class="site-logo__img" src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/resized_logo_UQww2soKuUsjaOGNB38o.png" style="aspect-ratio: 10 / 8" alt="DEV Community">
+</a>
+
+
+    <div class="crayons-header--search js-search-form" id="header-search"><form method="get" action="https://dev.to/search" role="search" accept-charset="UTF-8"><input name="utf8" type="hidden" value="✓"><div class="crayons-fields crayons-fields--horizontal"><div class="crayons-field flex-1 relative"><input id="search-input" class="crayons-header--search-input crayons-textfield" type="text" name="q" placeholder="Search..." autocomplete="off" aria-label="Search term"><button type="submit" aria-label="Search" class="c-btn c-btn--icon-alone absolute inset-px right-auto mt-0 py-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" class="crayons-icon c-btn__icon" focusable="false"><path d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0111 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 01-1.969 5.617zm-2.006-.742A6.977 6.977 0 0018 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 004.875-1.975l.15-.15z"></path></svg></button><a class="crayons-header--search-brand-indicator" href="https://www.algolia.com/developers/?utm_source=devto&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">Powered by <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" width="24" height="24" viewBox="0 0 500 500.34"><defs></defs><path class="cls-1" d="M250,0C113.38,0,2,110.16,.03,246.32c-2,138.29,110.19,252.87,248.49,253.67,42.71,.25,83.85-10.2,120.38-30.05,3.56-1.93,4.11-6.83,1.08-9.52l-23.39-20.74c-4.75-4.22-11.52-5.41-17.37-2.92-25.5,10.85-53.21,16.39-81.76,16.04-111.75-1.37-202.04-94.35-200.26-206.1,1.76-110.33,92.06-199.55,202.8-199.55h202.83V407.68l-115.08-102.25c-3.72-3.31-9.43-2.66-12.43,1.31-18.47,24.46-48.56,39.67-81.98,37.36-46.36-3.2-83.92-40.52-87.4-86.86-4.15-55.28,39.65-101.58,94.07-101.58,49.21,0,89.74,37.88,93.97,86.01,.38,4.28,2.31,8.28,5.53,11.13l29.97,26.57c3.4,3.01,8.8,1.17,9.63-3.3,2.16-11.55,2.92-23.6,2.07-35.95-4.83-70.39-61.84-127.01-132.26-131.35-80.73-4.98-148.23,58.18-150.37,137.35-2.09,77.15,61.12,143.66,138.28,145.36,32.21,.71,62.07-9.42,86.2-26.97l150.36,133.29c6.45,5.71,16.62,1.14,16.62-7.48V9.49C500,4.25,495.75,0,490.51,0H250Z"></path></svg> Algolia</a></div></div></form>
+      
+    </div>
+
+    <div class="flex items-center h-100 ml-auto">
+      <a class="c-link c-link--icon-alone c-link--block m:hidden mx-1" id="search-link" aria-label="Search" href="https://dev.to/search">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="a64vno8ut5d3njcdslhrwbnjkha4hejs" class="crayons-icon"><title id="a64vno8ut5d3njcdslhrwbnjkha4hejs">Search</title>
+    <path d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0111 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 01-1.969 5.617zm-2.006-.742A6.977 6.977 0 0018 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 004.875-1.975l.15-.15z"></path>
+</svg>
+
+      </a>
+        <div class="flex" id="authentication-top-nav-actions">
+          <span class="hidden m:block">
+            <a href="https://dev.to/enter" class="c-link c-link--block mr-2 whitespace-nowrap ml-auto" data-no-instant="">
+              Log in
+            </a>
+          </span>
+
+          <a href="https://dev.to/enter?state=new-user" data-tracking-id="ca_top_nav" data-tracking-source="top_navbar" class="c-cta c-cta--branded whitespace-nowrap mr-2" data-no-instant="">
+            Create account
+          </a>
+        </div>
+    </div>
+  </div>
+</header>
+
+<div class="hamburger">
+  <div class="hamburger__content">
+    <header class="hamburger__content__header">
+      <h2 class="fs-l fw-bold flex-1 break-word lh-tight">DEV Community</h2>
+
+      <button class="c-btn c-btn--icon-alone js-hamburger-trigger shrink-0" aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="a55kpw81ef5lpud8tmks517xku05q41n" aria-hidden="true" class="crayons-icon c-btn__icon"><title id="a55kpw81ef5lpud8tmks517xku05q41n">Close</title><path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636l4.95 4.95z"></path></svg>
+
+      </button>
+    </header>
+
+    <div class="p-2 js-navigation-links-container" id="authentication-hamburger-actions">
+    </div>
+  </div>
+  <div class="hamburger__overlay js-hamburger-trigger"></div>
+</div>
+
+
+        <div id="active-broadcast" class="broadcast-wrapper"></div>
+  <div id="base-payment-pointer" data-payment-pointer="$ilp.uphold.com/24HhrUGG7ekn"></div>
+<div id="page-content" class="wrapper stories stories-show  articleuser-1112914" data-current-page="stories-show">
+  <div id="page-content-inner" data-follow-clicks-initialized="true">
+    <div id="page-route-change" class="screen-reader-only" aria-live="polite" aria-atomic="true"></div>
+
+    
+<style>
+  .html-variant-wrapper { display: none}
+</style>
+
+<script src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/webcomponents-loader.js.download" integrity="sha384-3HK5hxQbkFqOIxMbpROlRmRtYl2LBZ52t+tqcjzsmr9NJuOWQxl8RgQSyFvq2lhy" crossorigin="anonymous" defer=""></script>
+
+  <script src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/webShare-0686f0b9ac40589694ef6ae6a6202c44119bc781c254f6cf6d52d8a008461156.js.download" defer="defer"></script>
+<script src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/articlePage-2ce43a58b4a803fc1de623116479220c61e6010d07bdf57d6077967dc575ee1b.js.download" defer="defer"></script>
+<script src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/commentDropdowns-dfff4aa703f176a9a69e6eabd04a84ca470838da4e1179bc72117b13e95afb.download" defer="defer"></script>
+
+    <script type="application/ld+json">
+      {"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://dev.to/meganad60/react-routing-practical-steps-in-creating-navigation-bar-that-renders-dynamic-content-with-react-2jon"},"url":"https://dev.to/meganad60/react-routing-practical-steps-in-creating-navigation-bar-that-renders-dynamic-content-with-react-2jon","image":["https://media.dev.to/cdn-cgi/image/width=1080,height=1080,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fmops0mrts8ludbdn2hkl.jpg","https://media.dev.to/cdn-cgi/image/width=1280,height=720,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fmops0mrts8ludbdn2hkl.jpg","https://media.dev.to/cdn-cgi/image/width=1600,height=900,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fmops0mrts8ludbdn2hkl.jpg"],"publisher":{"@context":"http://schema.org","@type":"Organization","name":"DEV Community","logo":{"@context":"http://schema.org","@type":"ImageObject","url":"https://media.dev.to/cdn-cgi/image/width=192,height=,fit=scale-down,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8j7kvp660rqzt99zui8e.png","width":"192","height":"192"}},"headline":"React Routing: Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React.","author":{"@context":"http://schema.org","@type":"Person","url":"https://dev.to/meganad60","name":"Nehemiah Dauda"},"datePublished":"2023-07-26T23:08:18Z","dateModified":"2023-07-26T23:10:22Z"}
+    </script>
+
+  
+<div class="crayons-layout crayons-layout--3-cols crayons-layout--article">
+  <aside class="crayons-layout__sidebar-left" aria-label="Article actions">
+    <div class="crayons-article-actions print-hidden">
+  <div class="crayons-article-actions__inner">
+
+    
+<div class="reaction-drawer__outer hoverdown" style="">
+  <button id="reaction-drawer-trigger" aria-label="reaction-drawer-trigger" aria-pressed="false" class="hoverdown-trigger crayons-reaction pseudo-reaction crayons-tooltip__activator relative">
+      <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction--like crayons-reaction__icon--inactive" style="width: 40px; height: 40px">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" role="img" aria-hidden="true" class="crayons-icon">
+    <g clip-path="url(#clip0_988_3276)">
+        <path d="M19 14V17H22V19H18.999L19 22H17L16.999 19H14V17H17V14H19ZM20.243 4.75698C22.505 7.02498 22.583 10.637 20.479 12.992L19.059 11.574C20.39 10.05 20.32 7.65998 18.827 6.16998C17.324 4.67098 14.907 4.60698 13.337 6.01698L12.002 7.21498L10.666 6.01798C9.09103 4.60598 6.67503 4.66798 5.17203 6.17198C3.68203 7.66198 3.60703 10.047 4.98003 11.623L13.412 20.069L12 21.485L3.52003 12.993C1.41603 10.637 1.49503 7.01898 3.75603 4.75698C6.02103 2.49298 9.64403 2.41698 12 4.52898C14.349 2.41998 17.979 2.48998 20.242 4.75698H20.243Z" fill="#525252"></path>
+    </g>
+    <defs>
+        <clippath id="clip0_988_3276">
+        <rect width="24" height="24" fill="white"></rect>
+        </clippath>
+    </defs>
+</svg>
+
+      </span>
+      <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--active" style="width: 40px; height: 40px">
+        <img aria_hidden="true" height="24" width="24" src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/heart-plus-active-9ea3b22f2bc311281db911d416166c5f430636e76b15cd5df6b3b841d830eefa.svg">
+      </span>
+      <span class="crayons-reaction__count" id="reaction_total_count">4</span>
+      <span class="crayons-tooltip__content">
+        Add reaction
+      </span>
+  </button>
+
+  <div class="reaction-drawer" aria-expanded="false">
+    <div class="reaction-drawer__container">
+        <button id="reaction-butt-like" name="Like" aria-label="Like" aria-pressed="false" class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2 activated" data-category="like">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg">
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-like">1</span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Like
+    </span>
+</button>
+
+        <button id="reaction-butt-unicorn" name="Unicorn" aria-label="Unicorn" aria-pressed="false" class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2 activated" data-category="unicorn">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg">
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-unicorn">1</span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Unicorn
+    </span>
+</button>
+
+        <button id="reaction-butt-exploding_head" name="Exploding Head" aria-label="Exploding Head" aria-pressed="false" class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2" data-category="exploding_head">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg">
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-exploding_head">0</span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Exploding Head
+    </span>
+</button>
+
+        <button id="reaction-butt-raised_hands" name="Raised Hands" aria-label="Raised Hands" aria-pressed="false" class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2 activated" data-category="raised_hands">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg">
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-raised_hands">1</span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Raised Hands
+    </span>
+</button>
+
+        <button id="reaction-butt-fire" name="Fire" aria-label="Fire" aria-pressed="false" class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2 activated" data-category="fire">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg">
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-fire">1</span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Fire
+    </span>
+</button>
+
+    </div>
+  </div>
+</div>
+
+<button id="reaction-butt-comment" aria-label="Jump to Comments" aria-pressed="false" class="crayons-reaction crayons-reaction--comment crayons-tooltip__activator relative" data-category="comment">
+    <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--inactive">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-hidden="true" class="crayons-icon">
+    <path d="M10 3h4a8 8 0 010 16v3.5c-5-2-12-5-12-11.5a8 8 0 018-8zm2 14h2a6 6 0 000-12h-4a6 6 0 00-6 6c0 3.61 2.462 5.966 8 8.48V17z"></path>
+</svg>
+
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-comment" data-count="0">0</span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Jump to Comments
+    </span>
+</button>
+
+<button id="reaction-butt-readinglist" aria-label="Add to reading list" aria-pressed="false" class="crayons-reaction crayons-reaction--readinglist crayons-tooltip__activator relative activated" data-category="readinglist">
+    <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--inactive">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-hidden="true" class="crayons-icon">
+    <path d="M5 2h14a1 1 0 011 1v19.143a.5.5 0 01-.766.424L12 18.03l-7.234 4.536A.5.5 0 014 22.143V3a1 1 0 011-1zm13 2H6v15.432l6-3.761 6 3.761V4z"></path>
+</svg>
+
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-readinglist">1</span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Save
+    </span>
+</button>
+
+
+
+    <div id="mod-actions-menu-btn-area" class="print-hidden trusted-visible-block align-center">
+    </div>
+    <div class="align-center m:relative">
+      <button id="article-show-more-button" aria-controls="article-show-more-dropdown" aria-expanded="false" aria-haspopup="true" class="dropbtn crayons-btn crayons-btn--ghost-dimmed crayons-btn--icon-rounded" aria-label="Share post options" data-initialized="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="a3d6m8zq5giaz9z9tpcfze34q1vhagpl" aria-hidden="true" class="crayons-icon dropdown-icon"><title id="a3d6m8zq5giaz9z9tpcfze34q1vhagpl">More...</title><path fill-rule="evenodd" clip-rule="evenodd" d="M7 12a2 2 0 11-4 0 2 2 0 014 0zm7 0a2 2 0 11-4 0 2 2 0 014 0zm5 2a2 2 0 100-4 2 2 0 000 4z"></path></svg>
+
+      </button>
+
+      <div id="article-show-more-dropdown" class="crayons-dropdown side-bar left-2 right-2 m:right-auto m:left-100 s:left-auto mb-1 m:mb-0 top-unset bottom-100 m:top-0 m:bottom-unset">
+        <div>
+          <button id="copy-post-url-button" class="flex justify-between crayons-link crayons-link--block w-100 bg-transparent border-0" data-posturl="https://dev.to/meganad60/react-routing-practical-steps-in-creating-navigation-bar-that-renders-dynamic-content-with-react-2jon">
+            <span class="fw-bold">Copy link</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" id="article-copy-icon" role="img" aria-labelledby="aqms1h3zg1qo8lfaf74747jymoit3kep" aria-hidden="true" class="crayons-icon mx-2 shrink-0"><title id="aqms1h3zg1qo8lfaf74747jymoit3kep">Copy link</title>
+    <path d="M7 6V3a1 1 0 011-1h12a1 1 0 011 1v14a1 1 0 01-1 1h-3v3c0 .552-.45 1-1.007 1H4.007A1 1 0 013 21l.003-14c0-.552.45-1 1.007-1H7zm2 0h8v10h2V4H9v2zm-2 5v2h6v-2H7zm0 4v2h6v-2H7z"></path>
+</svg>
+
+          </button>
+          <div id="article-copy-link-announcer" aria-live="polite" class="crayons-notice crayons-notice--success my-2 p-1" hidden="">Copied to Clipboard</div>
+        </div>
+
+        <div class="Desktop-only">
+          <a target="_blank" class="crayons-link crayons-link--block" rel="noopener" href="https://twitter.com/intent/tweet?text=%22React%20Routing%3A%20Practical%20Steps%20in%20Creating%20Navigation%20Bar%20that%20Renders%20Dynamic%20Content%20with%20React.%22%20by%20Nehemiah%20Dauda%20%23DEVCommunity%20https%3A%2F%2Fdev.to%2Fmeganad60%2Freact-routing-practical-steps-in-creating-navigation-bar-that-renders-dynamic-content-with-react-2jon">
+            Share to Twitter
+          </a>
+          <a target="_blank" class="crayons-link crayons-link--block" rel="noopener" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fdev.to%2Fmeganad60%2Freact-routing-practical-steps-in-creating-navigation-bar-that-renders-dynamic-content-with-react-2jon&amp;title=React%20Routing%3A%20Practical%20Steps%20in%20Creating%20Navigation%20Bar%20that%20Renders%20Dynamic%20Content%20with%20React.&amp;summary=A%20newbie%20in%20React%20will%20find%20it%20challenging%20in%20creating%20a%20navigation%20bar%20that%20renders%20different...&amp;source=DEV%20Community">
+            Share to LinkedIn
+          </a>
+          <a target="_blank" class="crayons-link crayons-link--block" rel="noopener" href="https://www.reddit.com/submit?url=https%3A%2F%2Fdev.to%2Fmeganad60%2Freact-routing-practical-steps-in-creating-navigation-bar-that-renders-dynamic-content-with-react-2jon&amp;title=React%20Routing%3A%20Practical%20Steps%20in%20Creating%20Navigation%20Bar%20that%20Renders%20Dynamic%20Content%20with%20React.">
+            Share to Reddit
+          </a>
+          <a target="_blank" class="crayons-link crayons-link--block" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https%3A%2F%2Fdev.to%2Fmeganad60%2Freact-routing-practical-steps-in-creating-navigation-bar-that-renders-dynamic-content-with-react-2jon&amp;t=React%20Routing%3A%20Practical%20Steps%20in%20Creating%20Navigation%20Bar%20that%20Renders%20Dynamic%20Content%20with%20React.">
+            Share to Hacker News
+          </a>
+          <a target="_blank" class="crayons-link crayons-link--block" rel="noopener" href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fdev.to%2Fmeganad60%2Freact-routing-practical-steps-in-creating-navigation-bar-that-renders-dynamic-content-with-react-2jon">
+            Share to Facebook
+          </a>
+          <a target="_blank" class="crayons-link crayons-link--block" rel="noopener" href="https://toot.kytta.dev/?text=https%3A%2F%2Fdev.to%2Fmeganad60%2Freact-routing-practical-steps-in-creating-navigation-bar-that-renders-dynamic-content-with-react-2jon">
+            Share to Mastodon
+          </a>
+        </div>
+
+        <web-share-wrapper shareurl="https://dev.to/meganad60/react-routing-practical-steps-in-creating-navigation-bar-that-renders-dynamic-content-with-react-2jon" sharetitle="React Routing: Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React." sharetext="A newbie in React will find it challenging in creating a navigation bar that renders different..." template="web-share-button">
+          <a href="https://dev.to/meganad60/react-routing-practical-steps-in-creating-navigation-bar-that-renders-dynamic-content-with-react-2jon#" class="dropdown-link-row crayons-link crayons-link--block">Share Post via...</a>
+        </web-share-wrapper>
+        <template id="web-share-button"></template>
+
+        <a href="https://dev.to/report-abuse" class="crayons-link crayons-link--block">Report Abuse</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </aside>
+
+  <main id="main-content" class="crayons-layout__content grid gap-4">
+    <div class="article-wrapper">
+
+
+      <article class="crayons-card crayons-article mb-4" id="article-show-container" data-article-id="1550207" data-article-slug="react-routing-practical-steps-in-creating-navigation-bar-that-renders-dynamic-content-with-react-2jon" data-author-id="1112914" data-author-name="Nehemiah Dauda" data-author-username="meganad60" data-co-author-ids="" data-path="/meganad60/react-routing-practical-steps-in-creating-navigation-bar-that-renders-dynamic-content-with-react-2jon" data-pin-path="/stories/feed/pinned_article" data-pinned-article-id="" data-published="true" data-scheduled="false" lang="en">
+        <header class="crayons-article__header" id="main-title">
+            <a class="crayons-article__cover" href="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/https___dev-to-uploads.s3.amazonaws.com_uploads_articles_mops0mrts8ludbdn2hkl.jpg">
+              <img src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/https___dev-to-uploads.s3.amazonaws.com_uploads_articles_mops0mrts8ludbdn2hkl.jpg" style="aspect-ratio: auto 1000 / 420;" width="1000" height="420" class="crayons-article__cover__image" alt="Cover image for React Routing: Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React.">
+            </a>
+
+          <div class="crayons-article__header__meta">
+            <div class="flex s:items-start flex-col s:flex-row">
+              <div id="action-space" class="crayons-article__actions mb-4 s:mb-0 s:order-last"></div>
+              <div class="flex flex-1 mb-5 items-start">
+                <div class="relative">
+                    <a href="https://dev.to/meganad60"><img class="radius-full align-middle" src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/https___dev-to-uploads.s3.amazonaws.com_uploads_user_profile_image_1112914_f46ba302-.jpg" width="40" height="40" alt="Nehemiah Dauda"></a>
+                </div>
+                <div class="pl-3 flex-1">
+                  <a href="https://dev.to/meganad60" class="crayons-link fw-bold">Nehemiah Dauda</a>
+                  <p class="fs-xs color-base-60">
+                      Posted on <time datetime="2023-07-26T23:08:18Z" class="date" title="Thursday, July 27, 2023 at 1:08:18 AM">Jul 27, 2023</time>
+
+
+                      • Originally published at <a style="color:#1395b8" href="https://nad.hashnode.dev/react-routing-practical-steps-in-creating-navigation-bar-that-renders-dynamic-content" target="_blank" rel="noopener noreferrer">nad.hashnode.dev</a> 
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="multiple_reactions_engagement">
+    <span class="reaction_engagement_like">
+      <img src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="24" height="24">
+      <span id="reaction_engagement_like_count">1</span>
+    </span>
+    <span class="reaction_engagement_unicorn">
+      <img src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg" width="24" height="24">
+      <span id="reaction_engagement_unicorn_count">1</span>
+    </span>
+    <span class="reaction_engagement_exploding_head hidden">
+      <img src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" width="24" height="24">
+      <span id="reaction_engagement_exploding_head_count">&nbsp;</span>
+    </span>
+    <span class="reaction_engagement_raised_hands">
+      <img src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" width="24" height="24">
+      <span id="reaction_engagement_raised_hands_count">1</span>
+    </span>
+    <span class="reaction_engagement_fire">
+      <img src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="24" height="24">
+      <span id="reaction_engagement_fire_count">1</span>
+    </span>
+</div>
+
+
+            <h1 class="fs-3xl m:fs-4xl l:fs-5xl fw-bold s:fw-heavy lh-tight mb-2 longer">
+              React Routing: Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React.
+            </h1>
+
+              <div class="spec__tags flex flex-wrap">
+              </div>
+          </div>
+        </header>
+
+        <div class="crayons-article__main">
+
+          <div class="crayons-article__body text-styles spec__body" data-article-id="1550207" id="article-body">
+            <p>A newbie in React will find it challenging in creating a navigation bar that renders different contents. Notable for building <strong>Single Page Applications (SPAs)</strong>, React does not provide any modalities for routing. Nevertheless, routing in React is done using an external library known as React-router-dom. What this article aims to achieve is to create a Navigation bar with React. This Navigation bar will enable Users to navigate between internal links and renders different content.</p>
+
+<p>To get a better understanding as we create our Navigation bar, this article will explain the following concepts:</p>
+
+<ul>
+<li>React</li>
+<li>SPAs</li>
+<li>React Router Dom</li>
+<li>Routing.</li>
+</ul>
+
+<h2>
+  <a name="what-is-react" href="https://dev.to/meganad60/react-routing-practical-steps-in-creating-navigation-bar-that-renders-dynamic-content-with-react-2jon#what-is-react">
+  </a>
+  <strong>What is React?</strong>
+</h2>
+
+<p>React also known as ReactJS is a JavaScript library used in building interactive and dynamic web interfaces. In other words, React builds the front end of web pages that interacts with Users.</p>
+
+<p>Although React was created as a Frontend library, over the years, React has evolved and can now be used to build complete applications. In general, React can be used to develop the following:</p>
+
+<ul>
+<li><p>Single Page Applications (SPAs)</p></li>
+<li><p>Backend server using frameworks such as Next.js, Gatsby.js, and so on</p></li>
+<li><p>Mobile applications using React Native.</p></li>
+</ul>
+
+<h2>
+  <a name="what-are-single-page-applications-spas" href="https://dev.to/meganad60/react-routing-practical-steps-in-creating-navigation-bar-that-renders-dynamic-content-with-react-2jon#what-are-single-page-applications-spas">
+  </a>
+  <strong>What are Single Page Applications (SPAs)?</strong>
+</h2>
+
+<p>SPAs are websites that render different content based on user requests without loading a new page. For instance, the default website loads an entirely new page when a user clicks a navigation link leading to other pages of the website. SPAs work in contrast to the default websites. SPAs load different web content on a single static page.</p>
+
+<h2>
+  <a name="what-is-reactrouter" href="https://dev.to/meganad60/react-routing-practical-steps-in-creating-navigation-bar-that-renders-dynamic-content-with-react-2jon#what-is-reactrouter">
+  </a>
+  <strong>What Is React-router?</strong>
+</h2>
+
+<p>React-router is an external library that enables React apps to navigate between links and render different contents based on user requests. React router must be installed before it can be used in React.</p>
+
+<h2>
+  <a name="what-is-routing" href="https://dev.to/meganad60/react-routing-practical-steps-in-creating-navigation-bar-that-renders-dynamic-content-with-react-2jon#what-is-routing">
+  </a>
+  <strong>What Is Routing?</strong>
+</h2>
+
+<p>Routing is the act of navigating to different sites, contents or pages using links based on user request. Through routing, a user can access different content on the websites.</p>
+
+<h2>
+  <a name="practical-steps-in-creating-navigation-bar-that-renders-dynamic-content" href="https://dev.to/meganad60/react-routing-practical-steps-in-creating-navigation-bar-that-renders-dynamic-content-with-react-2jon#practical-steps-in-creating-navigation-bar-that-renders-dynamic-content">
+  </a>
+  <strong>Practical Steps in Creating Navigation Bar that Renders Dynamic Content.</strong>
+</h2>
+
+<p>In this section, we shall be building a React navigation bar that contains links rendering different contents based on user requests.</p>
+
+<p><strong>Note:</strong> To create a React app using React official doc recommendation, you must install Node.js and NPM on your computer. Visit <a href="https://nodejs.org/" target="_blank" rel="noopener noreferrer">https://nodejs.org</a> to download Node.js and NPM if you don't have them on your computer.</p>
+
+<p><strong>Prerequisite:</strong> To have the best out of this article, it is important to be knowledgeable in JavaScript and React library tools such as Object, Object destructuring, JSX, Components, and Variables, amongst others. If you are unfamiliar with the above tools, I recommend taking some time to learn and get familiar with them. Ready to learn? Let's get started.</p>
+
+<p><strong>Step 1 - Create A React App.</strong><br>
+Follow the below instructions to create a React app:</p>
+
+<ol>
+<li><p>Create a folder for your React project.</p></li>
+<li><p>Navigate to the directory of the folder on your terminal to create a react app.</p></li>
+<li><p>Use npx or npm or yarn to create your react app as seen in the codes below.<br>
+</p></li>
+</ol>
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>C:\Users\Username\Desktop&gt;mkdir react-app
+C:\Users\Username\Desktop&gt;cd react-app
+C:\Users\Username\Desktop\react-app&gt;npx create-react-app my-app
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+<p>OR<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>C:\Users\Username\Desktop\react-app&gt;npm init react-app my-app
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>OR<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>C:\Users\Username\Desktop\react-app&gt;Yarn create-react-app my-app
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>Take note of the following:</p>
+
+<ul>
+<li><p><code>react-app</code> is the folder name and it can be any name of your choice.</p></li>
+<li><p><code>my-app</code> is the name of your React app and it can be any name of your choice.</p></li>
+</ul>
+
+<p><strong>Step 2 - Install react-router-dom and run the Server.</strong><br>
+Follow the below instructions to install react-router-dom and run the sever.</p>
+
+<ol>
+<li><p>Navigate to your React app directory.</p></li>
+<li><p>Install react-router-dom using npm.</p></li>
+<li><p>Start the server using npm after react-router-dom has finished installing.</p></li>
+</ol>
+
+<p>See the codes below.<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>C:\Users\Username\Desktop\react-app&gt;cd my-app
+C:\Users\Username\Desktop\react-app\my-app&gt;npm install react-router-dom
+C:\Users\Username\Desktop\react-app\my-app&gt;npm start
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>The development server runs some scripts and then your default browser opens on localhost:3000 and displays the image below.</p>
+
+<p><a href="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/alpbufs65bpd9g78cddw.png" class="article-body-image-wrapper" target="_blank" rel="noopener noreferrer"><img src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/alpbufs65bpd9g78cddw.png" alt="React Homepage" loading="lazy" width="800" height="389"></a></p>
+
+<p><strong>Step 3 - Modify Index.js File.</strong><br>
+In this step, we shall begin coding our program as we have already created our app with all necessary installations. The below instructions guide us to modify the index.js file.</p>
+
+<ol>
+<li><p>Open your project folder with any code editor of your choice.</p></li>
+<li><p>Open the index.js file in your src directory.</p></li>
+<li><p>Import <code>BrowserRouter</code> from <code>react-router-dom</code> using object destructuring.</p></li>
+<li><p>Update root const by wrapping the app component in between BrowserRouter tags.</p></li>
+</ol>
+
+<p>Our final codes will look just as in the example below.<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import { BrowserRouter } from 'react-router-dom';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  &lt;BrowserRouter&gt;
+    &lt;App /&gt;
+  &lt;/BrowserRouter&gt;
+);
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p><strong>Step 4 - Create Pages.</strong><br>
+In this step, we shall be creating different pages with different contents. The following instructions guide us to create the necessary pages:</p>
+
+<p>Firstly, Create a folder called pages in the src directory with the following files:</p>
+
+<ul>
+<li><p>Home.js</p></li>
+<li><p>About.js</p></li>
+<li><p>Contact.js.</p></li>
+</ul>
+
+<p>Next, Fill each of these files with their dynamic contents as seen below.</p>
+
+<ul>
+<li>Home.js
+</li>
+</ul>
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>function Home(){
+
+    return (
+        &lt;&gt;
+          &lt;h1&gt;Home Page&lt;/h1&gt;
+        &lt;/&gt;
+    );
+}
+
+export default Home;
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+<ul>
+<li>About.js
+</li>
+</ul>
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>function About(){
+
+    return (
+        &lt;&gt;
+          &lt;h1&gt;About Page&lt;/h1&gt;
+        &lt;/&gt;
+    );
+}
+
+export default About;
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+<ul>
+<li>Contact.js
+</li>
+</ul>
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>function Contact(){
+
+    return (
+        &lt;&gt;
+          &lt;h1&gt;Contact Page&lt;/h1&gt;
+        &lt;/&gt;
+    );
+}
+
+export default Contact;
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+<p><strong>Step 5 - Create a Navigation Component.</strong><br>
+Next, we shall be creating a navigation component. Follow the below instructions.</p>
+
+<ol>
+<li><p>Create a folder called 'components' in the src directory.</p></li>
+<li><p>Create a Nav.js file in the components' directory.</p></li>
+<li><p>Open Nav.js file you just created and import the <code>Link</code> from <code>react-router-dom</code> using object destructuring.</p></li>
+<li><p>Create a Nav function that returns a nav element with a class–nav.<br>
+See the codes below.<br>
+</p></li>
+</ol>
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>import { Link } from "react-router-dom";
+
+function Nav(){
+    return (
+        &lt;&gt;
+          &lt;nav className="nav"&gt;
+            &lt;Link to="/"&gt;Home&lt;/Link&gt;
+            &lt;Link to="/about"&gt;About&lt;/Link&gt;
+            &lt;Link to="/contact"&gt;Book&lt;/Link&gt;
+          &lt;/nav&gt;
+        &lt;/&gt;
+    );
+}
+
+export default Nav;
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+<p>In our above codes, in between nav tags, we have three Link elements. The Link elements will display as links on our browser and will be used to navigate between pages. The Link opening tags accept a 'to' attribute that points to the resources it's linking to.</p>
+
+<p><strong>Step 6 - Modify the App.js file.</strong><br>
+Open the App.js file in the src directory and execute the following instructions:</p>
+
+<ol>
+<li><p>Import all pages files from the pages folder.</p></li>
+<li><p>Import the Nav component from the components folder.</p></li>
+<li><p>Import Routes and Route from react-router-dom using object destructuring.</p></li>
+<li><p>Render the Nav component at the return method of the App function.</p></li>
+<li><p>Create a Routes element containing three Route elements.</p></li>
+<li><p>Input each Route element with a path and element attributes.</p></li>
+</ol>
+
+<p>Our final codes should be like the example below.<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>import React from 'react';
+import './App.css';
+import Home from './pages/Home';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import Nav from './components/Nav';
+import { Routes, Route } from 'react-router-dom';
+
+function App() {
+  return (
+    &lt;div className="App"&gt;
+      &lt;Nav /&gt;
+
+      &lt;Routes&gt;
+        &lt;Route path='/' element={&lt;Home /&gt;}&gt;&lt;/Route&gt;
+        &lt;Route path='/about' element={&lt;About /&gt;}&gt;&lt;/Route&gt;
+        &lt;Route path='/contact' element={&lt;Contact /&gt;}&gt;&lt;/Route&gt;
+      &lt;/Routes&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>In our above codes, the path attributes indicate the URL route. The forward slash of the Home component signifies the default route. The element attributes accept the components to be rendered, which we imported earlier.</p>
+
+<p><strong>Step 7 - Style the Navigation bar.</strong><br>
+Add CSS styles to our nav component. This can be done in the index.css file. See the codes below.<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>.navbar{
+  background-color: rgb(14, 136, 207);
+  padding: 3px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.navbar a{
+  text-decoration: none;
+  color: white;
+  font-size: 1.3rem;
+}
+
+.navbar a:hover{
+  color: aqua;
+}
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p><strong>Note:</strong> we use the 'a' element selector when styling our Link element. This is because Link elements are anchor tags but with slightly different functionality.</p>
+
+<p>Save your codes and navigate to your browser. Just as in the video below, we can now navigate between links and render different content.</p>
+
+<p><div class="ff-container ff-ready ff-active"><button type="button" aria-label="Pause animation playback" aria-pressed="false" class="c-btn gif-button fs-s gap-2"><svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="crayons-icon gif-play"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10ZM10.622 8.415a.4.4 0 0 0-.622.332v6.506a.4.4 0 0 0 .622.332l4.879-3.252a.4.4 0 0 0 0-.666l-4.88-3.252h.001Z"></path></svg><svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="crayons-icon gif-pause"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10ZM9 9v6h2V9H9Zm4 0v6h2V9h-2Z"></path></svg>GIF</button>
+<canvas class="ff-canvas ff-canvas-ready" width="690" height="388">
+</canvas><img src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/yctw75a1d1ab5yr7pzxo.gif" alt="outcome image" loading="lazy" width="690" height="388" data-animated="true" id="animated-0" class="ff-image"></div></p>
+
+<p>In conclusion, we've created a React app with a navigation bar that enables us to navigate between links. All thanks to React-router-dom. This is not the end, there are many more uses of React-router-dom. Explore more about React-router-dom and gain more experience using it.</p>
+
+<p>I hope this article was helpful, if yes, hit the like button and follow me on <a href="https://twitter.com/dauda_nehemiah" target="_blank" rel="noopener noreferrer">Twitter</a> and <a href="https://www.linkedin.com/in/nehemiah-dauda" target="_blank" rel="noopener noreferrer">LinkedIn</a> for more insightful tutorials and technical articles.</p>
+
+
+          </div>
+
+            <div class="js-billboard-container body-billboard-container" data-async-url="/meganad60/react-routing-practical-steps-in-creating-navigation-bar-that-renders-dynamic-content-with-react-2jon/billboards/post_body_bottom"><div>    <div class="crayons-card crayons-card--secondary crayons-bb billboard js-billboard body-billboard mb-2 mt-6" data-display-unit="" data-id="104709" data-category-click="click" data-category-impression="impression" data-context-type="article" data-special="nothing" data-article-id="1550207" data-type-of="in_house" data-impression-recorded="true">
+    <div class="crayons-bb__header relative">
+    <div class="crayons-bb__title">👋 Before you go</div>
+
+  <button id="sponsorship-dropdown-trigger-104709" aria-controls="sponsorship-dropdown-104709" aria-expanded="false" aria-haspopup="true" class="dropBtn crayons-bb__dropdown crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon" aria-label="Toggle dropdown menu" data-initialized="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="axmxtykzm0kedwojbvt6xbuztiblmgb" class="crayons-icon pointer-events-none"><title id="axmxtykzm0kedwojbvt6xbuztiblmgb">Dropdown menu</title>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.25 12a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm5.25 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm3.75 1.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
+</svg>
+
+  </button>
+
+  <div id="sponsorship-dropdown-104709" class="crayons-dropdown sponsorship-dropdown right-0">
+    <ul class="list-none m-0">
+        <li>
+          <a class="crayons-link crayons-link--block" href="https://dev.to/billboards">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" role="img" aria-hidden="true" class="crayons-icon c-btn__icon">
+    <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 100-16 8 8 0 000 16zM11 7h2v2h-2V7zm0 4h2v6h-2v-6z"></path>
+</svg>
+
+            What's a billboard?
+          </a>
+        </li>
+      <li>
+        <a class="crayons-link crayons-link--block" href="https://dev.to/settings/customization#sponsors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" role="img" aria-hidden="true" class="crayons-icon c-btn__icon">
+    <path d="M3.34 16.9999C2.91727 16.2689 2.58866 15.4874 2.362 14.6739C2.85531 14.423 3.26959 14.0406 3.55903 13.5688C3.84846 13.0971 4.00176 12.5545 4.00197 12.0011C4.00218 11.4476 3.84928 10.9049 3.5602 10.4329C3.27112 9.961 2.85712 9.57821 2.364 9.32694C2.81604 7.69243 3.67673 6.1999 4.865 4.98994C5.32909 5.29167 5.86762 5.45911 6.42098 5.47373C6.97434 5.48834 7.52095 5.34958 8.00033 5.07278C8.47971 4.79598 8.87315 4.39194 9.13713 3.90539C9.4011 3.41883 9.52531 2.86872 9.496 2.31594C11.1381 1.89157 12.8612 1.89226 14.503 2.31795C14.474 2.87071 14.5984 3.42073 14.8626 3.90715C15.1268 4.39357 15.5204 4.79742 15.9998 5.07401C16.4793 5.35059 17.0259 5.48913 17.5793 5.4743C18.1326 5.45946 18.671 5.29183 19.135 4.98994C19.714 5.57994 20.228 6.25095 20.66 6.99995C21.093 7.74895 21.417 8.52995 21.638 9.32595C21.1447 9.57685 20.7304 9.95932 20.441 10.4311C20.1515 10.9028 19.9982 11.4454 19.998 11.9988C19.9978 12.5523 20.1507 13.095 20.4398 13.5669C20.7289 14.0389 21.1429 14.4217 21.636 14.6729C21.184 16.3075 20.3233 17.8 19.135 19.0099C18.6709 18.7082 18.1324 18.5408 17.579 18.5262C17.0257 18.5115 16.479 18.6503 15.9997 18.9271C15.5203 19.2039 15.1268 19.6079 14.8629 20.0945C14.5989 20.5811 14.4747 21.1312 14.504 21.6839C12.8619 22.1083 11.1388 22.1076 9.497 21.6819C9.52605 21.1292 9.4016 20.5792 9.13742 20.0927C8.87324 19.6063 8.47964 19.2025 8.00017 18.9259C7.5207 18.6493 6.97405 18.5108 6.42073 18.5256C5.8674 18.5404 5.32896 18.7081 4.865 19.0099C4.27399 18.4069 3.76159 17.7315 3.34 16.9999ZM9 17.1959C10.0656 17.8106 10.8668 18.797 11.25 19.9659C11.749 20.0129 12.25 20.0139 12.749 19.9669C13.1324 18.7978 13.934 17.8114 15 17.1969C16.0652 16.5806 17.3205 16.3794 18.525 16.6319C18.815 16.2239 19.065 15.7889 19.273 15.3339C18.4524 14.4174 17.9991 13.2302 18 11.9999C18 10.7399 18.47 9.56295 19.273 8.66595C19.0635 8.21109 18.8125 7.77658 18.523 7.36795C17.3193 7.62025 16.0648 7.41942 15 6.80395C13.9344 6.18932 13.1332 5.20293 12.75 4.03394C12.251 3.98694 11.75 3.98594 11.251 4.03294C10.8676 5.20209 10.066 6.1885 9 6.80295C7.93478 7.41926 6.67948 7.62046 5.475 7.36795C5.18556 7.77623 4.93513 8.21081 4.727 8.66595C5.54757 9.5825 6.00088 10.7697 6 11.9999C6 13.2599 5.53 14.4369 4.727 15.3339C4.93647 15.7888 5.18754 16.2233 5.477 16.6319C6.68072 16.3796 7.93521 16.5805 9 17.1959ZM12 14.9999C11.2044 14.9999 10.4413 14.6839 9.87868 14.1213C9.31607 13.5587 9 12.7956 9 11.9999C9 11.2043 9.31607 10.4412 9.87868 9.87862C10.4413 9.31602 11.2044 8.99995 12 8.99995C12.7956 8.99995 13.5587 9.31602 14.1213 9.87862C14.6839 10.4412 15 11.2043 15 11.9999C15 12.7956 14.6839 13.5587 14.1213 14.1213C13.5587 14.6839 12.7956 14.9999 12 14.9999ZM12 12.9999C12.2652 12.9999 12.5196 12.8946 12.7071 12.7071C12.8946 12.5195 13 12.2652 13 11.9999C13 11.7347 12.8946 11.4804 12.7071 11.2928C12.5196 11.1053 12.2652 10.9999 12 10.9999C11.7348 10.9999 11.4804 11.1053 11.2929 11.2928C11.1054 11.4804 11 11.7347 11 11.9999C11 12.2652 11.1054 12.5195 11.2929 12.7071C11.4804 12.8946 11.7348 12.9999 12 12.9999Z" fill="black"></path>
+</svg>
+
+          Manage preferences
+        </a>
+      </li>
+      <hr>
+      <li>
+        <a class="crayons-link crayons-link--block" href="https://dev.to/report-abuse?billboard=104709">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" role="img" aria-hidden="true" class="crayons-icon c-btn__icon">
+    <path d="M12.382 3a1 1 0 0 1 .894.553L14 5h6a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1h-6.382a1 1 0 0 1-.894-.553L12 16H5v6H3V3h9.382Zm-.618 2H5v9h8.236l1 2H19V7h-6.236l-1-2Z"></path>
+</svg>
+
+          Report billboard
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+    <div class="p-1 pt-3 text-styles text-styles--billboard">
+      <p>Please leave your appreciation by commenting on this post!</p><p>It takes <em>just one minute</em> and is worth it for your career.</p><p><a href="https://dev.to/enter?state=new-user" class="ltag_cta ltag_cta--branded" role="button">Get started</a></p>
+    </div>
+  </div>
+
+</div></div>
+        </div>
+          <section id="comments" data-follow-button-container="true" data-updated-at="2024-07-08 15:49:52 UTC" class="text-padding mb-4 border-t-1 border-0 border-solid border-base-10">
+      <header class="relative flex justify-between items-center mb-6">
+        <div class="flex items-center">
+          <h2 class="crayons-subtitle-1">
+            Top comments <span class="js-comments-count" data-comments-count="0">(0)</span>
+          </h2>
+        </div>
+
+
+        <div id="comment-subscription" class="print-hidden"><div class="static"><div role="group" aria-label="Comment subscription options" class="crayons-btn-group"><button type="button" data-tracking-name="comment_subscription_toggle" class="crayons-btn crayons-btn--outlined">Subscribe</button></div></div>
+          
+        </div>
+      </header>
+
+      <div id="comments-container" data-testid="comments-container" data-commentable-id="1550207" data-commentable-type="Article" data-has-recent-comment-activity="false">
+
+          <div id="response-templates-data" class="hidden"></div>
+<script src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/validateFileInputs-60940e94bc313a641797e7abb452030a112bd147ed501af0b0a1c1c3fd68.download" defer="defer"></script>
+
+
+<form class="comment-form print-hidden" id="new_comment" action="https://dev.to/comments" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓" autocomplete="off">
+
+  <input type="hidden" name="authenticity_token" value="NOTHING" id="new_comment_authenticity_token">
+
+    <input value="1550207" autocomplete="off" type="hidden" name="comment[commentable_id]" id="comment_commentable_id">
+    <input value="Article" autocomplete="off" type="hidden" name="comment[commentable_type]" id="comment_commentable_type">
+    
+
+  <span class="crayons-avatar m:crayons-avatar--l mr-2 shrink-0">
+    <img src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/https___dev-to-uploads.s3.amazonaws.com_uploads_articles_8j7kvp660rqzt99zui8e.png" width="32" height="32" alt="pic" class="crayons-avatar__image overflow-hidden" id="comment-primary-user-profile--avatar" loading="lazy">
+  </span>
+  <div class="comment-form__inner">
+    <div class="comment-form__field" data-tracking-name="comment_form_textfield">
+      <textarea placeholder="Add to the discussion" onfocus="handleFocus(event)" onkeyup="handleKeyUp(event)" onkeydown="handleKeyDown(event)" oninput="handleChange(event)" id="text-area" required="required" class="crayons-textfield comment-textarea crayons-textfield--ghost" aria-label="Add a comment to the discussion" name="comment[body_markdown]"></textarea>
+
+    </div>
+
+    <div class="response-templates-container crayons-card crayons-card--secondary p-4 mb-4 comment-form__templates fs-base hidden">
+      <header class="mb-3">
+        <button type="button" class="crayons-btn personal-template-button active" data-target-type="personal" data-form-id="new_comment">Personal</button>
+        <button type="button" class="crayons-btn moderator-template-button hidden" data-target-type="moderator" data-form-id="new_comment">Trusted User</button>
+      </header>
+
+      <div class="personal-responses-container">
+      </div>
+      <div class="moderator-responses-container hidden">
+      </div>
+
+      <a target="_blank" rel="noopener nofollow" href="https://dev.to/settings/response-templates">
+        Create template
+      </a>
+      <p>Templates let you quickly answer FAQs or store snippets for re-use.</p>
+    </div>
+
+    <div class="comment-form__preview text-styles text-styles--secondary" id="preview-div"></div>
+
+    <div class="comment-form__buttons mb-4">
+      <button type="submit" class="crayons-btn mr-2 js-btn-enable" onclick="validateField(event)" data-tracking-name="comment_submit_button" disabled="">Submit</button>
+      <button type="button" class="preview-toggle crayons-btn crayons-btn--secondary comment-action-preview js-btn-enable mr-2" data-tracking-name="comment_preview_button" disabled="">Preview</button>
+      <a href="https://dev.to/404.html" class="dismiss-edit-comment crayons-btn crayons-btn--ghost js-btn-dismiss hidden">Dismiss</a>
+    </div>
+  </div>
+
+  <div class="code-of-conduct" id="toggle-code-of-conduct-checkbox"></div>
+</form>
+
+
+        <div class="comments" id="comment-trees-container">
+        </div>
+      </div>
+
+      <div class="align-center">
+
+
+  <nav class="fs-s align-center block" aria-label="Conduct controls">
+  <a href="https://dev.to/code-of-conduct" class="crayons-link crayons-link--secondary">Code of Conduct</a>
+  <span class="opacity-25 px-2" role="presentation">•</span>
+  <a href="https://dev.to/report-abuse" class="crayons-link crayons-link--secondary">Report abuse</a>
+</nav>
+
+</div>
+
+  </section>
+  <div id="hide-comments-modal" class="hidden">
+  <form id="hide-comments-modal__form" class="hide-comments-modal__form" data-type="json" action="https://dev.to/comments/hide" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓" autocomplete="off"><input type="hidden" name="_method" value="patch" autocomplete="off"><input type="hidden" name="authenticity_token" value="cMhgEx61bJlrK-F4tmSJPohi48tules0Z_6tr7ocmfsA7VUjfQF5g6wP3le8KfQyS-UwqfgeDMBqvCZqTpfktw" autocomplete="off">
+    <div class="hide-comments-modal__content">
+      <p class="pb-2">
+        Are you sure you want to hide this comment? It will become hidden in your post, but will still be visible via the comment's <a id="hide-comments-modal__comment-permalink" href="https://dev.to/meganad60/react-routing-practical-steps-in-creating-navigation-bar-that-renders-dynamic-content-with-react-2jon#">permalink</a>.
+      </p>
+      <label class="crayons-field crayons-field--checkbox my-2">
+        <input name="hide_children" type="hidden" value="0" autocomplete="off"><input class="hide_children crayons-checkbox" type="checkbox" value="1" name="hide_children" id="hide_children">
+        <p class="crayons-field__label">Hide child comments as well</p>
+      </label>
+      <p class="pb-4 pt-2">
+        <button type="submit" class="crayons-btn">
+          Confirm
+        </button>
+      </p>
+    </div>
+</form>  <p class="fs-s color-base-60">For further actions, you may consider blocking this person and/or <a id="hide-comments-modal__report-link" href="https://dev.to/report-abuse">reporting abuse</a></p>
+</div>
+
+
+
+      </article>
+
+      <div class="pb-4 crayons-layout__comments-billboard">
+        <div class="js-billboard-container pb-4 crayons-layout__comments-billboard" data-async-url="/meganad60/react-routing-practical-steps-in-creating-navigation-bar-that-renders-dynamic-content-with-react-2jon/billboards/post_comments"><div>    <div class="crayons-card crayons-card--secondary crayons-bb billboard js-billboard" data-display-unit="" data-id="129417" data-category-click="click" data-category-impression="impression" data-context-type="article" data-special="nothing" data-article-id="1550207" data-type-of="external" data-impression-recorded="true">
+    <div class="crayons-bb__header relative">
+    <div class="flex">
+        <a href="https://dev.to/auth0" target="_blank" rel="noopener" class="flex">
+          <img width="24" height="24" class="radius-default crayons-bb__image" src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/https___dev-to-uploads.s3.amazonaws.com_uploads_organization_profile_image_634_94111.png" alt="profile" loading="lazy">
+          <div class="crayons-bb__title ml-2 fs-s fw-medium">Auth0</div>
+        </a>
+        <span class="crayons-bb__indicator c-indicator c-indicator--subtle c-indicator--round fs-2xs fw-medium ml-2 py-1 px-2">Promoted</span>
+    </div>
+
+  <button id="sponsorship-dropdown-trigger-129417" aria-controls="sponsorship-dropdown-129417" aria-expanded="false" aria-haspopup="true" class="dropBtn crayons-bb__dropdown crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon" aria-label="Toggle dropdown menu" data-initialized="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="abvu69nxg2kda5mv7dlasm9z4sxihepv" class="crayons-icon pointer-events-none"><title id="abvu69nxg2kda5mv7dlasm9z4sxihepv">Dropdown menu</title>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.25 12a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm5.25 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm3.75 1.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
+</svg>
+
+  </button>
+
+  <div id="sponsorship-dropdown-129417" class="crayons-dropdown sponsorship-dropdown right-0">
+    <ul class="list-none m-0">
+        <li>
+          <a class="crayons-link crayons-link--block" href="https://dev.to/billboards">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" role="img" aria-hidden="true" class="crayons-icon c-btn__icon">
+    <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 100-16 8 8 0 000 16zM11 7h2v2h-2V7zm0 4h2v6h-2v-6z"></path>
+</svg>
+
+            What's a billboard?
+          </a>
+        </li>
+      <li>
+        <a class="crayons-link crayons-link--block" href="https://dev.to/settings/customization#sponsors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" role="img" aria-hidden="true" class="crayons-icon c-btn__icon">
+    <path d="M3.34 16.9999C2.91727 16.2689 2.58866 15.4874 2.362 14.6739C2.85531 14.423 3.26959 14.0406 3.55903 13.5688C3.84846 13.0971 4.00176 12.5545 4.00197 12.0011C4.00218 11.4476 3.84928 10.9049 3.5602 10.4329C3.27112 9.961 2.85712 9.57821 2.364 9.32694C2.81604 7.69243 3.67673 6.1999 4.865 4.98994C5.32909 5.29167 5.86762 5.45911 6.42098 5.47373C6.97434 5.48834 7.52095 5.34958 8.00033 5.07278C8.47971 4.79598 8.87315 4.39194 9.13713 3.90539C9.4011 3.41883 9.52531 2.86872 9.496 2.31594C11.1381 1.89157 12.8612 1.89226 14.503 2.31795C14.474 2.87071 14.5984 3.42073 14.8626 3.90715C15.1268 4.39357 15.5204 4.79742 15.9998 5.07401C16.4793 5.35059 17.0259 5.48913 17.5793 5.4743C18.1326 5.45946 18.671 5.29183 19.135 4.98994C19.714 5.57994 20.228 6.25095 20.66 6.99995C21.093 7.74895 21.417 8.52995 21.638 9.32595C21.1447 9.57685 20.7304 9.95932 20.441 10.4311C20.1515 10.9028 19.9982 11.4454 19.998 11.9988C19.9978 12.5523 20.1507 13.095 20.4398 13.5669C20.7289 14.0389 21.1429 14.4217 21.636 14.6729C21.184 16.3075 20.3233 17.8 19.135 19.0099C18.6709 18.7082 18.1324 18.5408 17.579 18.5262C17.0257 18.5115 16.479 18.6503 15.9997 18.9271C15.5203 19.2039 15.1268 19.6079 14.8629 20.0945C14.5989 20.5811 14.4747 21.1312 14.504 21.6839C12.8619 22.1083 11.1388 22.1076 9.497 21.6819C9.52605 21.1292 9.4016 20.5792 9.13742 20.0927C8.87324 19.6063 8.47964 19.2025 8.00017 18.9259C7.5207 18.6493 6.97405 18.5108 6.42073 18.5256C5.8674 18.5404 5.32896 18.7081 4.865 19.0099C4.27399 18.4069 3.76159 17.7315 3.34 16.9999ZM9 17.1959C10.0656 17.8106 10.8668 18.797 11.25 19.9659C11.749 20.0129 12.25 20.0139 12.749 19.9669C13.1324 18.7978 13.934 17.8114 15 17.1969C16.0652 16.5806 17.3205 16.3794 18.525 16.6319C18.815 16.2239 19.065 15.7889 19.273 15.3339C18.4524 14.4174 17.9991 13.2302 18 11.9999C18 10.7399 18.47 9.56295 19.273 8.66595C19.0635 8.21109 18.8125 7.77658 18.523 7.36795C17.3193 7.62025 16.0648 7.41942 15 6.80395C13.9344 6.18932 13.1332 5.20293 12.75 4.03394C12.251 3.98694 11.75 3.98594 11.251 4.03294C10.8676 5.20209 10.066 6.1885 9 6.80295C7.93478 7.41926 6.67948 7.62046 5.475 7.36795C5.18556 7.77623 4.93513 8.21081 4.727 8.66595C5.54757 9.5825 6.00088 10.7697 6 11.9999C6 13.2599 5.53 14.4369 4.727 15.3339C4.93647 15.7888 5.18754 16.2233 5.477 16.6319C6.68072 16.3796 7.93521 16.5805 9 17.1959ZM12 14.9999C11.2044 14.9999 10.4413 14.6839 9.87868 14.1213C9.31607 13.5587 9 12.7956 9 11.9999C9 11.2043 9.31607 10.4412 9.87868 9.87862C10.4413 9.31602 11.2044 8.99995 12 8.99995C12.7956 8.99995 13.5587 9.31602 14.1213 9.87862C14.6839 10.4412 15 11.2043 15 11.9999C15 12.7956 14.6839 13.5587 14.1213 14.1213C13.5587 14.6839 12.7956 14.9999 12 14.9999ZM12 12.9999C12.2652 12.9999 12.5196 12.8946 12.7071 12.7071C12.8946 12.5195 13 12.2652 13 11.9999C13 11.7347 12.8946 11.4804 12.7071 11.2928C12.5196 11.1053 12.2652 10.9999 12 10.9999C11.7348 10.9999 11.4804 11.1053 11.2929 11.2928C11.1054 11.4804 11 11.7347 11 11.9999C11 12.2652 11.1054 12.5195 11.2929 12.7071C11.4804 12.8946 11.7348 12.9999 12 12.9999Z" fill="black"></path>
+</svg>
+
+          Manage preferences
+        </a>
+      </li>
+      <hr>
+      <li>
+        <a class="crayons-link crayons-link--block" href="https://dev.to/report-abuse?billboard=129417">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" role="img" aria-hidden="true" class="crayons-icon c-btn__icon">
+    <path d="M12.382 3a1 1 0 0 1 .894.553L14 5h6a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1h-6.382a1 1 0 0 1-.894-.553L12 16H5v6H3V3h9.382Zm-.618 2H5v9h8.236l1 2H19V7h-6.236l-1-2Z"></path>
+</svg>
+
+          Report billboard
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+    <div class="p-1 pt-3 text-styles text-styles--billboard">
+      <p><a href="https://auth0.com/resources/ebooks/jwt-handbook?utm_source=devto&amp;utm_campaign=global_mult_mult_all_ciam-dev_dg-cmm_a-intake_native_devto_display_3p_appdevcampaign_utm2&amp;utm_medium=cpc&amp;utm_id=aNK4z000000UEnlGAG"><img src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/4UsqqGa.png" alt="Auth0" width="1440" height="1080" loading="lazy"></a></p><h2>  <a name="jwt-handbook" href="https://dev.to/meganad60/react-routing-practical-steps-in-creating-navigation-bar-that-renders-dynamic-content-with-react-2jon#jwt-handbook">  </a>  <a href="https://auth0.com/resources/ebooks/jwt-handbook?utm_source=devto&amp;utm_campaign=global_mult_mult_all_ciam-dev_dg-cmm_a-intake_native_devto_display_3p_appdevcampaign_utm2&amp;utm_medium=cpc&amp;utm_id=aNK4z000000UEnlGAG">JWT Handbook 🧑‍💻</a></h2><p>Every developer should have the JWT Handbook in their toolkit. With it you can access the most important aspects of the architecture of JWTs, including their binary representation and the algorithms used to construct them.</p><p><a href="https://auth0.com/resources/ebooks/jwt-handbook?utm_source=devto&amp;utm_campaign=global_mult_mult_all_ciam-dev_dg-cmm_a-intake_native_devto_display_3p_appdevcampaign_utm2&amp;utm_medium=cpc&amp;utm_id=aNK4z000000UEnlGAG" class="ltag_cta ltag_cta--branded" role="button">Get for free</a></p>
+    </div>
+  </div>
+
+</div></div>
+      </div>
+
+          <section class="crayons-card crayons-card--secondary text-padding mb-4 print-hidden" id="bottom-content-read-next">
+    <h2 class="crayons-subtitle-1">Read next</h2>
+      <a href="https://dev.to/blacknight318/self-hosting-perplexica-and-ollama-48al" data-preload-image="https://media.dev.to/cdn-cgi/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Frcue8vm4kftfbdcyqnv8.jpg" class="crayons-link mt-6 block">
+        <div class="flex items-center">
+          <span class="crayons-avatar crayons-avatar--xl m:crayons-avatar--2xl mr-4 shrink-0">
+              <img loading="lazy" alt="blacknight318 profile image" class="crayons-avatar__image" width="100" height="100" src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/https___dev-to-uploads.s3.amazonaws.com_uploads_user_profile_image_118427_14f4f28f-1.jpg">
+          </span>
+          <div>
+            <h3 class="fs-xl mb-0 lh-tight">Self-Hosting Perplexica and Ollama</h3>
+            <p class="opacity-75 pt-1">
+              Blacknight318 - <time datetime="2024-07-08T03:57:59Z">Jul 8</time>
+            </p>
+          </div>
+        </div>
+      </a>
+      <a href="https://dev.to/wetest/the-benefits-and-challenges-of-test-automation-in-game-development-43h3" data-preload-image="https://media.dev.to/cdn-cgi/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fw8hwcbbx0euebyeroeuu.png" class="crayons-link mt-6 block">
+        <div class="flex items-center">
+          <span class="crayons-avatar crayons-avatar--xl m:crayons-avatar--2xl mr-4 shrink-0">
+              <img loading="lazy" alt="wetest profile image" class="crayons-avatar__image" width="100" height="100" src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/https___dev-to-uploads.s3.amazonaws.com_uploads_user_profile_image_1150414_a042f988-.png">
+          </span>
+          <div>
+            <h3 class="fs-xl mb-0 lh-tight">The Benefits and Challenges of Test Automation in Game Development</h3>
+            <p class="opacity-75 pt-1">
+              WeTest - <time datetime="2024-07-08T09:28:01Z">Jul 8</time>
+            </p>
+          </div>
+        </div>
+      </a>
+      <a href="https://dev.to/rafaone/android-for-privacy-af1" data-preload-image="https://media.dev.to/cdn-cgi/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fllac14oy4u3y5ty7jvaw.png" class="crayons-link mt-6 block">
+        <div class="flex items-center">
+          <span class="crayons-avatar crayons-avatar--xl m:crayons-avatar--2xl mr-4 shrink-0">
+              <img loading="lazy" alt="rafaone profile image" class="crayons-avatar__image" width="100" height="100" src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/https___dev-to-uploads.s3.amazonaws.com_uploads_user_profile_image_925139_6300b7e4-8.jpg">
+          </span>
+          <div>
+            <h3 class="fs-xl mb-0 lh-tight">Android for Privacy</h3>
+            <p class="opacity-75 pt-1">
+              rafaone - <time datetime="2024-07-08T11:47:47Z">Jul 8</time>
+            </p>
+          </div>
+        </div>
+      </a>
+      <a href="https://dev.to/aimm_w_1761d19cef7fa886fd/introduction-to-bitpower-smart-contract-2709" data-preload-image="" class="crayons-link mt-6 block">
+        <div class="flex items-center">
+          <span class="crayons-avatar crayons-avatar--xl m:crayons-avatar--2xl mr-4 shrink-0">
+              <img loading="lazy" alt="aimm_w_1761d19cef7fa886fd profile image" class="crayons-avatar__image" width="100" height="100" src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/https___dev-to-uploads.s3.amazonaws.com_uploads_user_profile_image_1694330_4b9ccf77-.png">
+          </span>
+          <div>
+            <h3 class="fs-xl mb-0 lh-tight">Introduction to BitPower Smart Contract</h3>
+            <p class="opacity-75 pt-1">
+              aimm w - <time datetime="2024-07-08T11:50:48Z">Jul 8</time>
+            </p>
+          </div>
+        </div>
+      </a>
+  </section>
+
+    </div>
+  </main>
+
+  <aside class="crayons-layout__sidebar-right" aria-label="Author details">
+    <div class="crayons-article-sticky grid gap-4 pb-4 break-word" id="article-show-primary-sticky-nav">
+  <div class="crayons-card crayons-card--secondary branded-7 p-4 pt-0 gap-4 grid" style="border-top-color: #000000;">
+    <div class="-mt-4">
+  <a href="https://dev.to/meganad60" class="flex">
+    <span class="crayons-avatar crayons-avatar--xl  mr-2 shrink-0">
+      <img src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/https___dev-to-uploads.s3.amazonaws(1).com_uploads_user_profile_image_1112914_f46.jpg" class="crayons-avatar__image" alt="" loading="lazy">
+    </span>
+    <span class="crayons-link crayons-subtitle-2 mt-5">Nehemiah Dauda</span>
+  </a>
+</div>
+
+<div class="print-hidden">
+  <button name="button" type="button" data-info="{&quot;className&quot;:&quot;User&quot;,&quot;style&quot;:&quot;&quot;,&quot;id&quot;:1112914,&quot;name&quot;:&quot;Nehemiah Dauda&quot;}" class="crayons-btn follow-action-button whitespace-nowrap w-100 follow-user" aria-label="Follow user: Nehemiah Dauda" aria-pressed="false" data-fetched="fetched">Follow</button>
+</div>
+  <div class="color-base-70">
+    A Software developer and a Technical writer, focus-driven in web development and documentations. I connect with people at all levels and share insightful and educative technical contents.
+  </div>
+
+  <div class="user-metadata-details">
+    <ul class="user-metadata-details-inner">
+        <li>
+          <div class="key">
+            Location
+          </div>
+          <div class="value">
+            Abuja, Nigeria.
+          </div>
+        </li>
+          <li>
+            <div class="key">
+              Pronouns
+            </div>
+            <div class="value">
+              He/His/Him
+            </div>
+          </li>
+      <li>
+        <div class="key">
+          Joined
+        </div>
+        <div class="value">
+          <time datetime="2023-07-04T01:53:21Z" class="date">Jul 4, 2023</time>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  </div>
+
+      <div class="crayons-card crayons-card--secondary">
+        <header class="crayons-card__header">
+          <h3 class="crayons-subtitle-2">
+            More from <a href="https://dev.to/meganad60">Nehemiah Dauda</a>
+          </h3>
+        </header>
+        <div>
+            <a class="crayons-link crayons-link--contentful" href="https://dev.to/meganad60/the-basics-of-react-props-for-beginners-3j01">
+              The Basics of React Props for Beginners
+              <div class="crayons-link__secondary -ml-1">
+                  <span class="mr-1"><span class="opacity-50">#</span>react</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>webdev</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>javascript</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>programming</span>
+              </div>
+            </a>
+            <a class="crayons-link crayons-link--contentful" href="https://dev.to/meganad60/practical-steps-on-how-to-apply-the-useparams-hook-of-react-router-101o">
+              Practical steps on how to apply the useParams hook of React router.
+              <div class="crayons-link__secondary -ml-1">
+                  <span class="mr-1"><span class="opacity-50">#</span>webdev</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>react</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>programming</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>javascript</span>
+              </div>
+            </a>
+            <a class="crayons-link crayons-link--contentful" href="https://dev.to/meganad60/a-beginners-guide-understanding-css-animation-29l2">
+              A Beginner's Guide: Understanding CSS Animation
+              <div class="crayons-link__secondary -ml-1">
+              </div>
+            </a>
+        </div>
+      </div>
+</div>
+
+<div class="crayons-article-sticky grid gap-4 break-word js-billboard-container" data-async-url="/meganad60/react-routing-practical-steps-in-creating-navigation-bar-that-renders-dynamic-content-with-react-2jon/billboards/post_sidebar"><div>    <div class="crayons-card crayons-card--secondary crayons-bb billboard js-billboard" data-display-unit="" data-id="967" data-category-click="click" data-category-impression="impression" data-context-type="article" data-special="nothing" data-article-id="1550207" data-type-of="in_house" data-impression-recorded="true">
+    <div class="crayons-bb__header relative">
+    <div class="crayons-bb__title">DEV Community</div>
+
+  <button id="sponsorship-dropdown-trigger-967" aria-controls="sponsorship-dropdown-967" aria-expanded="false" aria-haspopup="true" class="dropBtn crayons-bb__dropdown crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon" aria-label="Toggle dropdown menu" data-initialized="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="a7ldozxs6aipm1kum4wzprmvtb2o94pr" class="crayons-icon pointer-events-none"><title id="a7ldozxs6aipm1kum4wzprmvtb2o94pr">Dropdown menu</title>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.25 12a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm5.25 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm3.75 1.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
+</svg>
+
+  </button>
+
+  <div id="sponsorship-dropdown-967" class="crayons-dropdown sponsorship-dropdown right-0">
+    <ul class="list-none m-0">
+        <li>
+          <a class="crayons-link crayons-link--block" href="https://dev.to/billboards">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" role="img" aria-hidden="true" class="crayons-icon c-btn__icon">
+    <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 100-16 8 8 0 000 16zM11 7h2v2h-2V7zm0 4h2v6h-2v-6z"></path>
+</svg>
+
+            What's a billboard?
+          </a>
+        </li>
+      <li>
+        <a class="crayons-link crayons-link--block" href="https://dev.to/settings/customization#sponsors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" role="img" aria-hidden="true" class="crayons-icon c-btn__icon">
+    <path d="M3.34 16.9999C2.91727 16.2689 2.58866 15.4874 2.362 14.6739C2.85531 14.423 3.26959 14.0406 3.55903 13.5688C3.84846 13.0971 4.00176 12.5545 4.00197 12.0011C4.00218 11.4476 3.84928 10.9049 3.5602 10.4329C3.27112 9.961 2.85712 9.57821 2.364 9.32694C2.81604 7.69243 3.67673 6.1999 4.865 4.98994C5.32909 5.29167 5.86762 5.45911 6.42098 5.47373C6.97434 5.48834 7.52095 5.34958 8.00033 5.07278C8.47971 4.79598 8.87315 4.39194 9.13713 3.90539C9.4011 3.41883 9.52531 2.86872 9.496 2.31594C11.1381 1.89157 12.8612 1.89226 14.503 2.31795C14.474 2.87071 14.5984 3.42073 14.8626 3.90715C15.1268 4.39357 15.5204 4.79742 15.9998 5.07401C16.4793 5.35059 17.0259 5.48913 17.5793 5.4743C18.1326 5.45946 18.671 5.29183 19.135 4.98994C19.714 5.57994 20.228 6.25095 20.66 6.99995C21.093 7.74895 21.417 8.52995 21.638 9.32595C21.1447 9.57685 20.7304 9.95932 20.441 10.4311C20.1515 10.9028 19.9982 11.4454 19.998 11.9988C19.9978 12.5523 20.1507 13.095 20.4398 13.5669C20.7289 14.0389 21.1429 14.4217 21.636 14.6729C21.184 16.3075 20.3233 17.8 19.135 19.0099C18.6709 18.7082 18.1324 18.5408 17.579 18.5262C17.0257 18.5115 16.479 18.6503 15.9997 18.9271C15.5203 19.2039 15.1268 19.6079 14.8629 20.0945C14.5989 20.5811 14.4747 21.1312 14.504 21.6839C12.8619 22.1083 11.1388 22.1076 9.497 21.6819C9.52605 21.1292 9.4016 20.5792 9.13742 20.0927C8.87324 19.6063 8.47964 19.2025 8.00017 18.9259C7.5207 18.6493 6.97405 18.5108 6.42073 18.5256C5.8674 18.5404 5.32896 18.7081 4.865 19.0099C4.27399 18.4069 3.76159 17.7315 3.34 16.9999ZM9 17.1959C10.0656 17.8106 10.8668 18.797 11.25 19.9659C11.749 20.0129 12.25 20.0139 12.749 19.9669C13.1324 18.7978 13.934 17.8114 15 17.1969C16.0652 16.5806 17.3205 16.3794 18.525 16.6319C18.815 16.2239 19.065 15.7889 19.273 15.3339C18.4524 14.4174 17.9991 13.2302 18 11.9999C18 10.7399 18.47 9.56295 19.273 8.66595C19.0635 8.21109 18.8125 7.77658 18.523 7.36795C17.3193 7.62025 16.0648 7.41942 15 6.80395C13.9344 6.18932 13.1332 5.20293 12.75 4.03394C12.251 3.98694 11.75 3.98594 11.251 4.03294C10.8676 5.20209 10.066 6.1885 9 6.80295C7.93478 7.41926 6.67948 7.62046 5.475 7.36795C5.18556 7.77623 4.93513 8.21081 4.727 8.66595C5.54757 9.5825 6.00088 10.7697 6 11.9999C6 13.2599 5.53 14.4369 4.727 15.3339C4.93647 15.7888 5.18754 16.2233 5.477 16.6319C6.68072 16.3796 7.93521 16.5805 9 17.1959ZM12 14.9999C11.2044 14.9999 10.4413 14.6839 9.87868 14.1213C9.31607 13.5587 9 12.7956 9 11.9999C9 11.2043 9.31607 10.4412 9.87868 9.87862C10.4413 9.31602 11.2044 8.99995 12 8.99995C12.7956 8.99995 13.5587 9.31602 14.1213 9.87862C14.6839 10.4412 15 11.2043 15 11.9999C15 12.7956 14.6839 13.5587 14.1213 14.1213C13.5587 14.6839 12.7956 14.9999 12 14.9999ZM12 12.9999C12.2652 12.9999 12.5196 12.8946 12.7071 12.7071C12.8946 12.5195 13 12.2652 13 11.9999C13 11.7347 12.8946 11.4804 12.7071 11.2928C12.5196 11.1053 12.2652 10.9999 12 10.9999C11.7348 10.9999 11.4804 11.1053 11.2929 11.2928C11.1054 11.4804 11 11.7347 11 11.9999C11 12.2652 11.1054 12.5195 11.2929 12.7071C11.4804 12.8946 11.7348 12.9999 12 12.9999Z" fill="black"></path>
+</svg>
+
+          Manage preferences
+        </a>
+      </li>
+      <hr>
+      <li>
+        <a class="crayons-link crayons-link--block" href="https://dev.to/report-abuse?billboard=967">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" role="img" aria-hidden="true" class="crayons-icon c-btn__icon">
+    <path d="M12.382 3a1 1 0 0 1 .894.553L14 5h6a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1h-6.382a1 1 0 0 1-.894-.553L12 16H5v6H3V3h9.382Zm-.618 2H5v9h8.236l1 2H19V7h-6.236l-1-2Z"></path>
+</svg>
+
+          Report billboard
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+    <div class="p-1 pt-3 text-styles text-styles--billboard">
+      <p><a href="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/fbsvcwqnj5mgkzuwy24r.png" class="article-body-image-wrapper"><img src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/fbsvcwqnj5mgkzuwy24r.png" alt="OpenAI" width="930" height="400" loading="lazy"></a></p><h2>  <a name="how-will-chatgpt-affect-the-future-of-coding" href="https://dev.to/meganad60/react-routing-practical-steps-in-creating-navigation-bar-that-renders-dynamic-content-with-react-2jon#how-will-chatgpt-affect-the-future-of-coding">  </a>  How will ChatGPT affect the future of coding?</h2><p><strong>We're not sure either</strong>, but the DEV community is figuring this out together.</p><h3>  <a name="create-a-dev-account-it-only-takes-a-minute-and-is-100-free" href="https://dev.to/meganad60/react-routing-practical-steps-in-creating-navigation-bar-that-renders-dynamic-content-with-react-2jon#create-a-dev-account-it-only-takes-a-minute-and-is-100-free">  </a>  <a href="https://dev.to/enter?state=new-user">Create a DEV account</a>. It only takes a minute and is 100% free.</h3><p>New AI content every day.</p>
+    </div>
+  </div>
+
+</div></div>
+
+  </aside>
+</div>
+
+
+<div class="mod-actions-menu print-hidden"></div>
+<div data-testid="unpublish-post-modal-container" class="unpublish-post-modal-container hidden"></div>
+
+<div class="fullscreen-code js-fullscreen-code"></div>
+<script src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/followButtons-f2455d1f50a862b83fa006b1953e3a1644598781243cae25d3e75b13c04184fd..download" defer="defer"></script>
+<script src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/billboard-74ff82a6420048fc77cb70bc23c73c4b36f981f5024f0a537492c08285254040.js.download" defer="defer"></script>
+<script src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/localizeArticleDates-70147c5c6bfe350b42e020ebb2a3dd37419d83978982b5a67b6389119b.download" defer="defer"></script>
+<script src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/articleReactions-e7ba298d64fe1f81ee65569ef6a2d32e434b04edc825641493408245ff955d.download" defer="defer"></script>
+
+<script>
+  var waitingOnPodcast = setInterval(function() {
+  if (typeof initializePodcastPlayback !== 'undefined') {
+    initializePodcastPlayback();
+    clearInterval(waitingOnPodcast);
+  }
+}, 1);
+
+  if (document.head.querySelector('meta[name="user-signed-in"][content="true"]')) {
+  function displayPollResults(json) {
+    var totalVotes = json.voting_data.votes_count;
+    json.voting_data.votes_distribution.forEach(function(point) {
+      var pollOptionItem = document.getElementById('poll_option_list_item_'+point[0]);
+      var optionText = document.getElementById('poll_option_label_'+point[0]).textContent;
+      if (json.user_vote_poll_option_id === point[0]) {
+        var votedClass = 'optionvotedfor'
+      } else {
+        var votedClass = 'optionnotvotedfor'
+      }
+      if (totalVotes === 0) {
+        var percent = 0;
+      } else {
+        var percent = (point[1]/totalVotes)*100;
+      }
+      var roundedPercent = Math.round( percent * 10 ) / 10
+      var percentFromRight = (100-roundedPercent)
+      var html = '<span><span class="ltag-votepercent ltag-'+votedClass+'" style="right:'+percentFromRight+'%"></span>        <span class="ltag-votepercenttext">'+optionText+' — '+roundedPercent+'%</span></span>';
+      pollOptionItem.innerHTML = html;
+      pollOptionItem.classList.add('already-voted')
+      document.getElementById('showmethemoney-'+json.poll_id).innerHTML = '<span class="ltag-voting-results-count">'+totalVotes+' total votes</span>';
+    })
+  }
+
+  var polls = document.getElementsByClassName('ltag-poll');
+  for (var i = 0; i < polls.length; i += 1) {
+    var poll = polls[i]
+    var pollId = poll.dataset.pollId
+    window.fetch('/poll_votes/'+pollId)
+    .then(function(response){
+      response.json().then(
+        function(json) {
+          if (json.voted) {
+            displayPollResults(json)
+          } else {
+            var els = document.getElementById('poll_'+json.poll_id).getElementsByClassName('ltag-polloption');
+
+            for (i = 0; i < els.length; i += 1) {
+              els[i].addEventListener('click', function(e) {
+                var tokenMeta = document.querySelector("meta[name='csrf-token']")
+                if (!tokenMeta) {
+                  alert('Whoops. There was an error. Your vote was not counted. Try refreshing the page.')
+                  return
+                }
+                var csrfToken = tokenMeta.getAttribute('content')
+                var optionId = e.target.dataset.optionId
+                window.fetch('/poll_votes', {
+                  method: 'POST',
+                  headers: {
+                    'X-CSRF-Token': csrfToken,
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({poll_vote: { poll_option_id: optionId } }),
+                  credentials: 'same-origin',
+                }).then(function(response){
+                  response.json().then(function(j){displayPollResults(j)})
+                })
+              });
+            }
+
+            document.getElementById('showmethemoney-'+json.poll_id).addEventListener('click', function() {
+              pollId = this.dataset.pollId
+              window.fetch('/poll_skips', {
+                method: 'POST',
+                headers: {
+                  'X-CSRF-Token': csrfToken,
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({poll_skip: {poll_id: pollId }}),
+                credentials: 'same-origin',
+              }).then(function(response){
+                response.json().then(function(j){displayPollResults(j)})
+              })
+            });
+          }
+        }
+      )
+    })
+  }
+} else {
+    var els = document.getElementsByClassName('ltag-poll')
+    for (i = 0; i < els.length; i += 1) {
+      els[i].onclick = function(e) {
+        if (typeof showLoginModal !== "undefined") {
+          showLoginModal();
+        }
+      }
+    }
+}
+
+  function activateRunkitTags() {
+  if (!areAnyRunkitTagsPresent())
+    return
+
+  var checkRunkit = setInterval(function() {
+    try {
+      dynamicallyLoadRunkitLibrary()
+
+      if (typeof(RunKit) === 'undefined') {
+        return
+      }
+
+      replaceTagContentsWithRunkitWidget()
+      clearInterval(checkRunkit);
+    } catch(e) {
+      console.error(e);
+      clearInterval(checkRunkit);
+    }
+  }, 200);
+}
+
+function isRunkitTagAlreadyActive(runkitTag) {
+  return runkitTag.querySelector("iframe") !== null;
+};
+
+function areAnyRunkitTagsPresent() {
+  var presentRunkitTags = document.getElementsByClassName("runkit-element");
+
+  return presentRunkitTags.length > 0
+}
+
+function replaceTagContentsWithRunkitWidget() {
+  var targets = document.getElementsByClassName("runkit-element");
+  for (var i = 0; i < targets.length; i++) {
+    if (isRunkitTagAlreadyActive(targets[i])) {
+      continue;
+    }
+
+    var wrapperContent = targets[i].textContent;
+    if (/^(<iframe src)/.test(wrapperContent) === false) {
+      if (targets[i].children.length > 0) {
+        var preamble = targets[i].children[0].textContent;
+        var content = targets[i].children[1].textContent;
+        targets[i].innerHTML = "";
+        var notebook = RunKit.createNotebook({
+          element: targets[i],
+          source: content,
+          preamble: preamble
+        });
+      }
+    }
+  }
+};
+
+function dynamicallyLoadRunkitLibrary() {
+  if (typeof(dynamicallyLoadScript) === "undefined")
+    return
+
+  dynamicallyLoadScript("//embed.runkit.com")
+}
+
+activateRunkitTags();
+
+    // Listen for resize events and match them to the iframe
+  window.addEventListener('message', function(event) {
+    if (event.origin.startsWith('https://platform.twitter.com')) {
+        var iframes = document.getElementsByTagName('iframe');
+        for (var i = 0; i < iframes.length; i++) {
+          if (event.source === iframes[i].contentWindow) { // iframes which match the event
+            var iframe = iframes[i];
+            var data = event.data['twttr.embed'];
+            if (data && data['method'] === 'twttr.private.resize' && data['params'] && data['params']['0']) {
+              iframe.style.height = data['params']['0']['height'] + 0.5 + 'px';
+              iframe.style.minHeight = data['params']['0']['height'] + 0.5 + 'px';
+              iframe.style.width = data['params']['0']['width'] + 'px !important';
+            }
+            break;
+          }
+        }
+    }
+}, false);
+
+// Legacy support: We have shifted up how we render tweets, but still need to render
+// the old way for old embed. This could eventually be removed.
+var videoPreviews = document.getElementsByClassName("ltag__twitter-tweet__media__video-wrapper");
+[].forEach.call(videoPreviews, function(el) {
+  el.onclick = function(e) {
+    var divHeight = el.offsetHeight;
+    el.style.maxHeight = divHeight + "px";
+    el.getElementsByClassName("ltag__twitter-tweet__media--video-preview")[0].style.display = "none";
+    el.getElementsByClassName("ltag__twitter-tweet__video")[0].style.display = "block";
+    el.getElementsByTagName("video")[0].play();
+  }
+});
+var tweets = document.getElementsByClassName("ltag__twitter-tweet__main");
+[].forEach.call(tweets, function(tweet){
+  tweet.onclick = function(e) {
+    if (e.target.nodeName == "A" || e.target.parentElement.nodeName == "A") {
+      return;
+    }
+    window.open(tweet.dataset.url,"_blank");
+  }
+});
+
+</script>
+<div class="js-billboard-container pb-4 crayons-layout__comments-billboard" data-async-url="/meganad60/react-routing-practical-steps-in-creating-navigation-bar-that-renders-dynamic-content-with-react-2jon/billboards/post_fixed_bottom"><div>    <div class="crayons-card crayons-card--secondary crayons-bb popover-billboard crayons-story__billboard js-billboard fixed bottom-0 left-0 right-0 popover-billboard--menuopenupwards" data-display-unit="" data-id="126473" data-category-click="click" data-category-impression="impression" data-context-type="article" data-dismissal-sku="" data-special="nothing" data-article-id="1550207" data-type-of="in_house" data-impression-recorded="true" style="display: none;">
+    <div class="flex">
+      <div class="crayons-bb__header relative">
+    <div class="crayons-bb__title">👋 Kindness is contagious</div>
+
+  <button id="sponsorship-dropdown-trigger-126473" aria-controls="sponsorship-dropdown-126473" aria-expanded="false" aria-haspopup="true" class="dropBtn crayons-bb__dropdown crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon" aria-label="Toggle dropdown menu" data-initialized="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="asw3mul7v11674l1yussmhp77u6regd0" class="crayons-icon pointer-events-none"><title id="asw3mul7v11674l1yussmhp77u6regd0">Dropdown menu</title>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.25 12a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm5.25 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm3.75 1.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
+</svg>
+
+  </button>
+
+  <div id="sponsorship-dropdown-126473" class="crayons-dropdown sponsorship-dropdown right-0">
+    <ul class="list-none m-0">
+        <li>
+          <a class="crayons-link crayons-link--block" href="https://dev.to/billboards">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" role="img" aria-hidden="true" class="crayons-icon c-btn__icon">
+    <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 100-16 8 8 0 000 16zM11 7h2v2h-2V7zm0 4h2v6h-2v-6z"></path>
+</svg>
+
+            What's a billboard?
+          </a>
+        </li>
+      <li>
+        <a class="crayons-link crayons-link--block" href="https://dev.to/settings/customization#sponsors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" role="img" aria-hidden="true" class="crayons-icon c-btn__icon">
+    <path d="M3.34 16.9999C2.91727 16.2689 2.58866 15.4874 2.362 14.6739C2.85531 14.423 3.26959 14.0406 3.55903 13.5688C3.84846 13.0971 4.00176 12.5545 4.00197 12.0011C4.00218 11.4476 3.84928 10.9049 3.5602 10.4329C3.27112 9.961 2.85712 9.57821 2.364 9.32694C2.81604 7.69243 3.67673 6.1999 4.865 4.98994C5.32909 5.29167 5.86762 5.45911 6.42098 5.47373C6.97434 5.48834 7.52095 5.34958 8.00033 5.07278C8.47971 4.79598 8.87315 4.39194 9.13713 3.90539C9.4011 3.41883 9.52531 2.86872 9.496 2.31594C11.1381 1.89157 12.8612 1.89226 14.503 2.31795C14.474 2.87071 14.5984 3.42073 14.8626 3.90715C15.1268 4.39357 15.5204 4.79742 15.9998 5.07401C16.4793 5.35059 17.0259 5.48913 17.5793 5.4743C18.1326 5.45946 18.671 5.29183 19.135 4.98994C19.714 5.57994 20.228 6.25095 20.66 6.99995C21.093 7.74895 21.417 8.52995 21.638 9.32595C21.1447 9.57685 20.7304 9.95932 20.441 10.4311C20.1515 10.9028 19.9982 11.4454 19.998 11.9988C19.9978 12.5523 20.1507 13.095 20.4398 13.5669C20.7289 14.0389 21.1429 14.4217 21.636 14.6729C21.184 16.3075 20.3233 17.8 19.135 19.0099C18.6709 18.7082 18.1324 18.5408 17.579 18.5262C17.0257 18.5115 16.479 18.6503 15.9997 18.9271C15.5203 19.2039 15.1268 19.6079 14.8629 20.0945C14.5989 20.5811 14.4747 21.1312 14.504 21.6839C12.8619 22.1083 11.1388 22.1076 9.497 21.6819C9.52605 21.1292 9.4016 20.5792 9.13742 20.0927C8.87324 19.6063 8.47964 19.2025 8.00017 18.9259C7.5207 18.6493 6.97405 18.5108 6.42073 18.5256C5.8674 18.5404 5.32896 18.7081 4.865 19.0099C4.27399 18.4069 3.76159 17.7315 3.34 16.9999ZM9 17.1959C10.0656 17.8106 10.8668 18.797 11.25 19.9659C11.749 20.0129 12.25 20.0139 12.749 19.9669C13.1324 18.7978 13.934 17.8114 15 17.1969C16.0652 16.5806 17.3205 16.3794 18.525 16.6319C18.815 16.2239 19.065 15.7889 19.273 15.3339C18.4524 14.4174 17.9991 13.2302 18 11.9999C18 10.7399 18.47 9.56295 19.273 8.66595C19.0635 8.21109 18.8125 7.77658 18.523 7.36795C17.3193 7.62025 16.0648 7.41942 15 6.80395C13.9344 6.18932 13.1332 5.20293 12.75 4.03394C12.251 3.98694 11.75 3.98594 11.251 4.03294C10.8676 5.20209 10.066 6.1885 9 6.80295C7.93478 7.41926 6.67948 7.62046 5.475 7.36795C5.18556 7.77623 4.93513 8.21081 4.727 8.66595C5.54757 9.5825 6.00088 10.7697 6 11.9999C6 13.2599 5.53 14.4369 4.727 15.3339C4.93647 15.7888 5.18754 16.2233 5.477 16.6319C6.68072 16.3796 7.93521 16.5805 9 17.1959ZM12 14.9999C11.2044 14.9999 10.4413 14.6839 9.87868 14.1213C9.31607 13.5587 9 12.7956 9 11.9999C9 11.2043 9.31607 10.4412 9.87868 9.87862C10.4413 9.31602 11.2044 8.99995 12 8.99995C12.7956 8.99995 13.5587 9.31602 14.1213 9.87862C14.6839 10.4412 15 11.2043 15 11.9999C15 12.7956 14.6839 13.5587 14.1213 14.1213C13.5587 14.6839 12.7956 14.9999 12 14.9999ZM12 12.9999C12.2652 12.9999 12.5196 12.8946 12.7071 12.7071C12.8946 12.5195 13 12.2652 13 11.9999C13 11.7347 12.8946 11.4804 12.7071 11.2928C12.5196 11.1053 12.2652 10.9999 12 10.9999C11.7348 10.9999 11.4804 11.1053 11.2929 11.2928C11.1054 11.4804 11 11.7347 11 11.9999C11 12.2652 11.1054 12.5195 11.2929 12.7071C11.4804 12.8946 11.7348 12.9999 12 12.9999Z" fill="black"></path>
+</svg>
+
+          Manage preferences
+        </a>
+      </li>
+      <hr>
+      <li>
+        <a class="crayons-link crayons-link--block" href="https://dev.to/report-abuse?billboard=126473">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" role="img" aria-hidden="true" class="crayons-icon c-btn__icon">
+    <path d="M12.382 3a1 1 0 0 1 .894.553L14 5h6a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1h-6.382a1 1 0 0 1-.894-.553L12 16H5v6H3V3h9.382Zm-.618 2H5v9h8.236l1 2H19V7h-6.236l-1-2Z"></path>
+</svg>
+
+          Report billboard
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+      <button id="sponsorship-close-trigger-126473" aria-controls="sponsorship-close-126473" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="aac1u2uupk7snllzcstqxbudxb2y0l5d" class="crayons-icon pointer-events-none"><title id="aac1u2uupk7snllzcstqxbudxb2y0l5d">Close</title><path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636l4.95 4.95z"></path></svg>
+
+      </button>
+    </div>
+    <div class="p-1 text-styles text-styles--billboard">
+      <p>Dive into a sea of information with this piece, brought to you by the friendly DEV Community—<strong>each developer,</strong> regardless of their journey, is encouraged to add to our shared knowledge.</p><p>A simple "thank you" can make a difference—show your gratitude below in the comments!</p><p><strong>Sharing knowledge enriches our experience</strong> on DEV and strengthens our community bonds. Did you find this article helpful? Taking a moment to thank the author can make a big difference.</p><h3>  <a name="-cta-httpsdevtoenterstatenewuser-" href="https://dev.to/meganad60/react-routing-practical-steps-in-creating-navigation-bar-that-renders-dynamic-content-with-react-2jon#-cta-httpsdevtoenterstatenewuser-">  </a>  <a href="https://dev.to/enter?state=new-user" class="ltag_cta ltag_cta--branded" role="button">Okay</a></h3>
+    </div>
+  </div>
+
+</div></div>
+
+    <div id="runtime-banner-container"></div>
+  </div>
+</div>
+    
+<footer id="footer" class="crayons-footer print-hidden">
+  <div id="footer-container" class="crayons-footer__container">
+    <p class="fs-s crayons-footer__description">
+      <a class="c-link c-link--branded fw-medium" aria-label="DEV Community Home" href="https://dev.to/">DEV Community</a> — A constructive and inclusive social network for software developers. With you every step of your journey.
+    </p>
+
+    <ul class="footer__nav-links flex gap-2 justify-center flex-wrap fs-s p-0" style="">
+        <li class="footer__nav-link flex items-center">
+    <a href="https://dev.to/">
+      Home
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://dev.to/pod">
+      Podcasts
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://dev.to/videos">
+      Videos
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://dev.to/tags">
+      Tags
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://dev.to/help">
+      DEV Help
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://shop.forem.com/" target="_blank" rel="noopener noreferrer">
+      Forem Shop
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://dev.to/advertise">
+      Advertise on DEV
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://dev.to/challenges">
+      DEV Challenges
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://dev.to/showcase">
+      DEV Showcase
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://dev.to/about">
+      About
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://dev.to/contact">
+      Contact
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://dev.to/guides">
+      Guides
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://dev.to/software-comparisons">
+      Software comparisons
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+
+    </ul>
+
+    <ul class="footer__nav-links flex gap-2 justify-center flex-wrap fs-s p-0" style="">
+        <li class="footer__nav-link flex items-center">
+    <a href="https://dev.to/code-of-conduct">
+      Code of Conduct
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://dev.to/privacy">
+      Privacy Policy
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://dev.to/terms">
+      Terms of use
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+
+    </ul>
+
+    <div class="fs-s">
+      <p>Built on <a class="c-link c-link--branded" target="_blank" rel="noopener noreferrer" href="https://www.forem.com/">Forem</a> — the <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to/t/opensource">open source</a> software that powers <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to/">DEV</a> and other inclusive communities.</p>
+      <p>Made with love and <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to/t/rails">Ruby on Rails</a>. DEV Community <span title="copyright">©</span> 2016 - 2024.</p>
+    </div>
+  </div>
+</footer>
+<div id="snack-zone"><div class="hidden"></div></div>
+
+    <div id="global-signup-modal" class="authentication-modal hidden">
+  <div class="authentication-modal__container">
+    <figure class="authentication-modal__image-container">
+      <img class="authentication-modal__image" src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/https___dev-to-uploads.s3.amazonaws(1).com_uploads_articles_8j7kvp660rqzt99zui8e.png" alt="DEV Community" loading="lazy">
+    </figure>
+    <div class="authentication-modal__content">
+      <p class="authentication-modal__description">
+          We're a place where coders share, stay up-to-date and grow their careers.
+      </p>
+    </div>
+    <div class="authentication-modal__actions">
+      <a href="https://dev.to/enter" class="crayons-btn" aria-label="Log in" data-no-instant="">
+        Log in
+      </a>
+      <a href="https://dev.to/enter?state=new-user" class="crayons-btn crayons-btn--ghost-brand js-global-signup-modal__create-account" aria-label="Create new account" data-no-instant="">
+        Create account
+      </a>
+    </div>
+  </div>
+</div>
+
+<script src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/signupModalShortcuts-0b25469b985100a01e94cbd7fccaf7f0a4d776e129aac65c766aa32cb2.download" defer="defer"></script>
+
+    <div id="cookie-consent"></div>
+  <div id="i18n-translations" data-translations="{&quot;en&quot;:{&quot;core&quot;:{&quot;add_comment&quot;:&quot;Add comment&quot;,&quot;beta&quot;:&quot;beta&quot;,&quot;comment&quot;:&quot;Comment&quot;,&quot;copy_link&quot;:&quot;Copy link&quot;,&quot;edit_profile&quot;:&quot;Edit profile&quot;,&quot;follow&quot;:&quot;Follow&quot;,&quot;follow_back&quot;:&quot;Follow back&quot;,&quot;following&quot;:&quot;Following&quot;,&quot;like&quot;:&quot;Like&quot;,&quot;loading&quot;:&quot;loading...&quot;,&quot;reaction&quot;:&quot;Reaction&quot;,&quot;report_abuse&quot;:&quot;Report abuse&quot;,&quot;search&quot;:&quot;Search&quot;,&quot;success_settings&quot;:&quot;Successfully updated settings.&quot;,&quot;counted_organization&quot;:{&quot;one&quot;:&quot;%{count} organization&quot;,&quot;other&quot;:&quot;%{count} organizations&quot;},&quot;counted_user&quot;:{&quot;one&quot;:&quot;%{count} person&quot;,&quot;other&quot;:&quot;%{count} people&quot;},&quot;not_following&quot;:&quot;You&#39;re not following anyone&quot;,&quot;following_everyone&quot;:&quot;You&#39;re following %{details} (everyone)&quot;,&quot;you_are_following&quot;:&quot;You&#39;re following&quot;,&quot;and&quot;:&quot;and&quot;}}}"></div>
+  <div id="reaction-category-resources" class="hidden" aria-hidden="true">
+    <img data-name="Like" data-slug="like" data-position="1" src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18">
+    <img data-name="Unicorn" data-slug="unicorn" data-position="2" src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg" width="18" height="18">
+    <img data-name="Exploding Head" data-slug="exploding_head" data-position="3" src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" width="18" height="18">
+    <img data-name="Raised Hands" data-slug="raised_hands" data-position="4" src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" width="18" height="18">
+    <img data-name="Fire" data-slug="fire" data-position="5" src="./React Routing_ Practical Steps in Creating Navigation Bar that Renders Dynamic Content with React. - DEV Community_files/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="18" height="18">
+</div>
+
+  <script defer="">
+    if (document.querySelector('.articletag-marquee') && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        // Step 2: Find the first .crayons-article__body element
+        var articleBody = document.querySelector('.crayons-article__body');
+        
+        if (articleBody) {
+            // Step 3: Extract inner text from the article body
+            var articleText = articleBody.innerText;
+            
+            // Step 4: Create a marquee and add it to the bottom of the page
+            var marquee = document.createElement('marquee');
+            marquee.textContent = articleText;
+            marquee.style.width = '100%';
+            marquee.style.position = 'fixed';
+            marquee.style.bottom = '0';
+            marquee.style.backgroundColor = '#ffffff'; // Set background color if needed
+            marquee.style.color = '#000000'; // Set text color if needed
+            marquee.style.padding = '10px'; // Add some padding for better visibility
+            
+            document.body.appendChild(marquee);
+        }
+    }
+</script>
+  
+  
+</body></html>
