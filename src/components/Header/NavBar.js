@@ -3,6 +3,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import logo from "../../images/logo.png"
 import "../Styles/bigScreen.css";
 import { Link } from 'react-router-dom';
+import { Men } from './Men';
 
 
 export const NavBar = () => {
@@ -22,9 +23,9 @@ export const NavBar = () => {
                 </ul>
             </div>
             <div className="nav-login-cart">
-                <button>Login</button>
+                <Link to="/login"><button>Login</button></Link>
                 <div className="cart">
-                    <FaShoppingCart color="coral" size="30px" cursor="pointer"/>
+                    <Link to="/cart"><FaShoppingCart color="coral" size="30px" cursor="pointer"/></Link>
                     <div className="cart-qnty">
                         2
                     </div>

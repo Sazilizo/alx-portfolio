@@ -1,55 +1,64 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Helmet } from 'react-helmet';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { fetchData} from '../../Data/fetchData';
-import { Products } from '../../Products/Product';
+import { Products } from '../../Products/Products';
 import { NavBar } from '../Header/NavBar';
 import { Home } from '../Header/Home';
 import { ShopCategory } from './ShopCategory';
 import { Cart } from './Cart';
+import { cleanBanners } from '../../Data/cleanBanners';
+import { Hero } from '../Banners/Hero';
+import { ShopContext } from '../../context/ShopContext';
+import { Header } from '../Header/Header';
 
 export const Layout = () => {
-    const [products, setProducts] = useState([]);
-    const [filtered, setFiltered] = useState([]);
-
-    const getProducts = async()=>{
-        const data = fetchData("product")
-        .then(data=> setProducts(data))
-        return data
-    }
+    const {products} = useContext(ShopContext)
+    const [banners, setBanners] = useState([])
+    const getBanner = async () => {
+        try {
+          const data = await fetchData("storeBanner", cleanBanners);
+          setBanners(data);
+        } catch (error) {
+          console.error("Error fetching banners:", error);
+        }
+    };
     useEffect(()=>{
-        getProducts()
+        getBanner()
     },[])
-  return (
-    <BrowserRouter>
-        <div className="Layout">
-            <Helmet>
-                <meta charset="UTF-8"/>
-                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-                <title>Swipe a'loot</title>
-            </Helmet>
-            <header>
-                <NavBar/>
-            </header>
-            <main className="main-container">
-                <Routes>
-                    <Route path="/" element={<Home/>}></Route>
-                    <Route path="/men" element={<ShopCategory category="men"/>}></Route>
-                    <Route path="/women" element={<ShopCategory category="women"/>} ></Route>
-                    <Route path="/electronics" element={<ShopCategory category="electronics"/>}></Route>
-                    <Route path="product" element={<Products/>}>
-                        <Route path=":id" element={<Products/>}></Route>
-                    </Route>
-                    <Route path="/cart" element={<Cart/>}></Route>
-                    <Route path="/login" element={<loginSignUp/>}></Route>
-                </Routes>
-                <section>
-                </section>
-            </main>
-        </div>
-        <footer>
-            Footer
-        </footer>
-    </BrowserRouter>
-  )
+    return (
+        <BrowserRouter>
+            <div className="Layout">
+
+                <Helmet>
+                    <meta charset="UTF-8"/>
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                    <title>Swipe a'loot</title>
+                </Helmet>   
+                <header>
+                    <Header/>
+                    <Hero banners={banners[1]}/>
+                    {/* <Products products={products}/> */}
+                </header>
+                <main className="main-container">
+                    <Routes>
+                        <Route path="/" element={<Home/>}></Route>
+                        <Route path="/men" element={<ShopCategory section="men"/>}></Route>
+                        <Route path="/women" element={<ShopCategory section="women"/>} ></Route>
+                        <Route path="/electronics" element={<ShopCategory section="music"/>}></Route>
+                        <Route path="product" element={<Products/>}>
+                            <Route path=":id" element={<Products/>}></Route>
+                        </Route>
+                        <Route path="/cart" element={<Cart/>}></Route>
+                        <Route path="/login" element={<loginSignUp/>}></Route>
+                    </Routes>
+                    <section>
+                    </section>
+                </main>
+                <footer>
+                    <Hero banners={banners[0]}/>
+                </footer>
+            </div>
+        </BrowserRouter>
+    )
 }
