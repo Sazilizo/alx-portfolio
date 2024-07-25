@@ -118,3 +118,104 @@
     border-radius: 10px;
     cursor:pointer;
 }
+.loginSignUp{
+    display: flex;
+    width:100%;
+    height:100%;
+    padding:10px;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+}
+.UserContainer{
+    width:50%;
+    display: flex;
+    background-color: antiquewhite;
+    flex-direction: column;
+    gap: 14px;
+    padding: 5px;
+}
+.UserContainer h1{
+    text-align: center;
+}
+.fields input{
+    display: block;
+    padding:5px;
+    margin:5px;
+    outline:none;
+    border:none;
+    width:80%;
+}
+.fields input::after{
+    content:"";
+    width:100%;
+    height:2px;
+    background-color: teal;
+}
+.user-agreement input{
+    display: inline-block;
+}
+.SignUp button{
+    width:100%;
+    margin:auto;
+    text-align: center;
+    background-color: teal;
+    color:white;
+    border:none;
+    height:2rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.Product-Display{
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    border:1px solid red;
+    margin:1rem auto;
+}
+.Product-Display-left{
+    width:20%;
+    height:100%;
+    border: 2px solid blue;
+}
+.Product-Display-img-list{
+    width:100%;
+    height:max-content;
+}
+.Product-Display-img-list img{
+    width:100%;
+    height:100%;
+    object-fit: coover;
+}
+.Product-Display-img{
+    width:50%;
+}
+.Product-Display-img img{
+    width:100%;
+    object-fit: cover;
+}
+.Product-Display-right{
+    align-items: center;
+    padding:0 10px
+}
+.Product-Display-Info{
+    height:max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap:0.8rem;
+    padding:10px;
+    border:1px solid red
+}
+.Product-Display-Sizes{
+    display: flex;
+    gap: 5px;
+}
+.CartBtn button{
+    cursor:pointer;
+    background-color: teal;
+    color:white;
+    padding:5px 10px;
+    outline: none;
+    border:1px solid teal
+}
