@@ -1,22 +1,21 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 import "../components/Styles/Products.css"
 
 export const Item = ({products}) => {
-  console.log(products)
-  console.log("item")
+
   return (
-    <div className='Product'>
-        <div className="image-container">
-          <img src={products.image} alt={products.title}/>
-          {products.isOnSale? <p>{products.sale+"%"}</p>:""}
+      <div className="Product-card">
+        <div className="Product-image">
+          <Link to={`/product/${products.id}`}>
+            <img src={products.image} alt={products.title}/>
+          </Link>
         </div>
-        <div className="Product-info">
-          <div className="">
+        <div className="Product-details">
             <p>{products.title}</p>
             {products.isOnSale? <p>was: R{products.price}</p>: ""}
-            <p>R{products.isOnSale? products.price - (products.price * (products.sale / 100)):products.price}</p>
-          </div>
+            <p>Now R{products.isOnSale? products.price - (products.price * (products.sale / 100)):products.price}</p>
         </div>
-    </div>
+      </div>
   )
 }
