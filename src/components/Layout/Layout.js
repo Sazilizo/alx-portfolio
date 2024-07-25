@@ -11,6 +11,7 @@ import { cleanBanners } from '../../Data/cleanBanners';
 import { Hero } from '../Banners/Hero';
 import { ShopContext } from '../../context/ShopContext';
 import { Header } from '../Header/Header';
+import { LoginSignUp } from './LoginSignUp';
 
 export const Layout = () => {
     const {products} = useContext(ShopContext)
@@ -38,7 +39,6 @@ export const Layout = () => {
                 <header>
                     <Header/>
                     <Hero banners={banners[1]}/>
-                    {/* <Products products={products}/> */}
                 </header>
                 <main className="main-container">
                     <Routes>
@@ -47,10 +47,10 @@ export const Layout = () => {
                         <Route path="/women" element={<ShopCategory section="women"/>} ></Route>
                         <Route path="/electronics" element={<ShopCategory section="music"/>}></Route>
                         <Route path="product" element={<Products/>}>
-                            <Route path=":id" element={<Products/>}></Route>
+                            <Route path=":productId" element={<Products/>}></Route>
                         </Route>
                         <Route path="/cart" element={<Cart/>}></Route>
-                        <Route path="/login" element={<loginSignUp/>}></Route>
+                        <Route path="/loginsignup" element={<LoginSignUp/>}></Route>
                     </Routes>
                     <section>
                     </section>

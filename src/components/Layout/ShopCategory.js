@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { ShopContext } from '../../context/ShopContext'
 import { Item } from '../../Products/Item'
+import "../Styles/Products.css"
 
 export const ShopCategory = (props) => {
   const {products} = useContext(ShopContext)
@@ -11,7 +12,7 @@ export const ShopCategory = (props) => {
           <span>showing 1-12</span> out of {products.length}
         </p>
         <div className="shop-Category-Sort">
-            <label for="cars">sort by:</label>
+            <label htmlFor="cars">sort by:</label>
 
             <select name="sortby" id="sortby">
               <option value="price">price</option>
@@ -21,12 +22,15 @@ export const ShopCategory = (props) => {
             </select>
         </div>
       </div>
-      <div className="Shop-Products">
-        {products.map((item)=>{
-          if(props.section == item.section){
-            return <Item  products={item} key={item.id}/> 
-          }
-        })}
+      <div className="Products-Container">
+        <div className="Filters">Filters</div>
+        <div className="Products">
+          {products.map((item)=>{
+            if(props.section == item.section){
+              return <Item  products={item} key={item.id}/> 
+            }
+          })}
+        </div>
       </div>
       <div className="explore-more">
           Explore More
