@@ -1,6 +1,5 @@
 
 export const cleanProducts = async (data)=>{
-    // console.log(data)
     const cleanData = data.map(item=>{
         const allFields = item.fields
         const id = item.sys.id
