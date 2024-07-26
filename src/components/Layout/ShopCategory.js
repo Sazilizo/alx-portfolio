@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { ShopContext } from '../../context/ShopContext'
 import { Item } from '../../Products/Item'
 import "../Styles/Products.css"
+import "../Styles/smallScreen.css"
 
 export const ShopCategory = (props) => {
   const {products} = useContext(ShopContext)
@@ -23,7 +24,7 @@ export const ShopCategory = (props) => {
         </div>
       </div>
       <div className="Products-Container">
-        <div className="Filters">Filters</div>
+        <div className="Filters">Coming Soon</div>
         <div className="Products">
           {products.map((item)=>{
             if(props.section == item.section){
@@ -31,9 +32,6 @@ export const ShopCategory = (props) => {
             }
           })}
         </div>
-      </div>
-      <div className="explore-more">
-          Explore More
       </div>
     </div>
   )

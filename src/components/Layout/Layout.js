@@ -12,6 +12,8 @@ import { Hero } from '../Banners/Hero';
 import { ShopContext } from '../../context/ShopContext';
 import { Header } from '../Header/Header';
 import { LoginSignUp } from './LoginSignUp';
+import "../Styles/smallScreen.css"
+import { ProductBanner } from '../../Products/ProductBanner';
 
 export const Layout = () => {
     const {products} = useContext(ShopContext)
@@ -42,7 +44,7 @@ export const Layout = () => {
                 </header>
                 <main className="main-container">
                     <Routes>
-                        <Route path="/" element={<Home/>}></Route>
+                        <Route path="/" element={<Home products={products}/>}></Route>
                         <Route path="/men" element={<ShopCategory section="men"/>}></Route>
                         <Route path="/women" element={<ShopCategory section="women"/>} ></Route>
                         <Route path="/electronics" element={<ShopCategory section="music"/>}></Route>
@@ -52,11 +54,10 @@ export const Layout = () => {
                         <Route path="/cart" element={<Cart/>}></Route>
                         <Route path="/loginsignup" element={<LoginSignUp/>}></Route>
                     </Routes>
-                    <section>
-                    </section>
                 </main>
                 <footer>
                     <Hero banners={banners[0]}/>
+                    {/* //create a footer banner with its own social media icons */}
                 </footer>
             </div>
         </BrowserRouter>

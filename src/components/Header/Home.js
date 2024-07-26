@@ -1,9 +1,9 @@
 import React from 'react'
-
-export const Home = () => {
+import { ProductBanner } from '../../Products/ProductBanner'
+export const Home = ({products}) => {
   return (
     <div>
-        Home
+        <ProductBanner products={products}/>
     </div>
   )
 }

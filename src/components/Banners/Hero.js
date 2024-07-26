@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react'
-
+import "../Styles/smallScreen.css"
 export const Hero = ({banners}) => {
-    console.log(banners)
+
   return (
     <div>
         {banners&& [banners].map(({id,images,mainTitle,buttonText,smallText,sale})=>{
