@@ -8,7 +8,7 @@ export const Item = ({products}) => {
       <div className="Product-card">
         <div className="Product-image">
           <Link to={`/product/${products.id}`}>
-            <img src={products.image} alt={products.title}/>
+            <img onClick={window.scrollTo(150,150)} src={products.image} alt={products.title}/>
           </Link>
         </div>
         <div className="Product-details">
