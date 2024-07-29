@@ -14,6 +14,7 @@ import { Header } from '../Header/Header';
 import { LoginSignUp } from './LoginSignUp';
 import "../Styles/smallScreen.css"
 import { ProductBanner } from '../../Products/ProductBanner';
+import { MainBanners } from '../Banners/MainBanners';
 
 export const Layout = () => {
     const {products} = useContext(ShopContext)
