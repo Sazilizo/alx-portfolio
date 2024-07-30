@@ -8,7 +8,7 @@ export const Products = () => {
   const {products} = useContext(ShopContext);
   const {productId} = useParams();
   const product = products.find((e)=> e.id == productId)
-
+  console.log(products)
   return (
     <>
       <ProductDisplay product={product}/>
