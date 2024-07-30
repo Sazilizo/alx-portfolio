@@ -1,9 +1,10 @@
 import React from 'react'
 import { ProductBanner } from '../../Products/ProductBanner'
+import { MainBanners } from '../Banners/MainBanners'
 export const Home = ({products}) => {
   return (
-    <div>
-        <ProductBanner products={products}/>
-    </div>
+    <>
+        <MainBanners products={products}/>
+    </>
   )
 }
