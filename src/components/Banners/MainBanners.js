@@ -15,27 +15,27 @@ export const MainBanners = ({products}) => {
   return (
     <div className="Grid-Banners">
         
-        <div className="Banner grid-row-span-2">
+        <div className="Banner grid-row-span-2 small-screen-span-col-4">
             <Link to="/men">
                 <MenBanner men={men}/>
             </Link>
         </div>
-        <div className="Banner">
+        <div className="Banner small-screen-span-col-2">
             <Link to="/men">
                 <SaleBanner sale={sale}/>
             </Link>
         </div>
-        <div className="Banner">
+        <div className="Banner small-screen-span-col-2">
             <Link to="/electronics">
                 <ElectronicsBanner electronics={electronics}/>
             </Link>
         </div>
-        <div className="Banner grid-row-span-2">
+        <div className="Banner grid-row-span-2 small-screen-span-col-2">
             <Link to="/women">
                 <WomenBanner women={women} />
             </Link>
         </div>
-        <div className="Banner grid-col-span-2">
+        <div className="Banner grid-col-span-2 small-screen-span-col-2">
             <Link to="/women">
                 <SneakersBanner  sneakers={sneakers}/>
             </Link>
