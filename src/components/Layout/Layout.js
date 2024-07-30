@@ -15,6 +15,7 @@ import { LoginSignUp } from './LoginSignUp';
 import "../Styles/smallScreen.css"
 import { ProductBanner } from '../../Products/ProductBanner';
 import { MainBanners } from '../Banners/MainBanners';
+import { FooterBanner } from '../Banners/FooterBanner';
 
 export const Layout = () => {
     const {products} = useContext(ShopContext)
@@ -57,8 +58,7 @@ export const Layout = () => {
                     </Routes>
                 </main>
                 <footer>
-                    <Hero banners={banners[0]}/>
-                    {/* //create a footer banner with its own social media icons */}
+                    <FooterBanner />
                 </footer>
             </div>
         </BrowserRouter>
